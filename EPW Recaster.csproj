@@ -400,6 +400,9 @@
     <None Include="Config\Params.cfg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Config\Language.cfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="GitHub Assets\Capture Region.png" />
     <Content Include="GitHub Assets\Combo Stats.png" />
     <Content Include="GitHub Assets\Condition Entry.png" />

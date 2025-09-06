@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -158,6 +159,82 @@ namespace EPW_Recaster
                             }
                         }
                     }
+                }
+            }
+
+            SetLanguageFromCfg();
+        }
+
+        private void SetLanguageFromCfg()
+        {
+            string langCfgPath = Tesseract.Ocr.AssemblyCodeBaseDirectory + @"\Config\Language.cfg";
+
+            if (File.Exists(langCfgPath))
+            {
+                string[] lines = File.ReadAllLines(langCfgPath);
+                foreach (string line in lines)
+                {
+                    if (!line.Contains('#')) // Ignore custom comments.
+                    {
+                        string[] split = line.Split('|');
+                        if (split.Count() == 2 && split[0].ToLower().Contains("language"))
+                        {
+                            Tesseract.Ocr.Language = split[1].Trim().ToLower();
+                        }
+                    }
+                }
+            }
+
+            EnsureTrainedData(Tesseract.Ocr.Language);
+        }
+
+        private void SaveLanguageToCfg(string language)
+        {
+            string langCfgPath = Tesseract.Ocr.AssemblyCodeBaseDirectory + @"\Config\Language.cfg";
+            string[] contents = {
+                "# =================================================================",
+                "# OCR language for Tesseract",
+                "# Supported options:",
+                "#   eng - English (default)",
+                "#   por - Portuguese (Brazil)",
+                "# =================================================================",
+                $"Language | {language}"
+            };
+
+            Directory.CreateDirectory(Path.GetDirectoryName(langCfgPath));
+            File.WriteAllLines(langCfgPath, contents);
+        }
+
+        private void ToggleLanguage()
+        {
+            string newLang = Tesseract.Ocr.Language == "eng" ? "por" : "eng";
+            Tesseract.Ocr.Language = newLang;
+            EnsureTrainedData(newLang);
+            SaveLanguageToCfg(newLang);
+            btnSwitchLanguage.Text = newLang.ToUpper();
+        }
+
+        private void EnsureTrainedData(string language)
+        {
+            string tessdataDir = Path.Combine(Tesseract.Ocr.AssemblyCodeBaseDirectory, Tesseract.Ocr.VersionPath, "tessdata");
+            string trainedDataPath = Path.Combine(tessdataDir, $"{language}.traineddata");
+
+            if (File.Exists(trainedDataPath))
+            {
+                return;
+            }
+
+            Directory.CreateDirectory(tessdataDir);
+            string url = $"https://github.com/tesseract-ocr/tessdata/raw/main/{language}.traineddata";
+
+            using (var httpClient = new HttpClient())
+            using (var response = httpClient.GetAsync(url, HttpCompletionOption.ResponseHeadersRead).Result)
+            {
+                response.EnsureSuccessStatusCode();
+                using (var stream = response.Content.ReadAsStreamAsync().Result)
+                using (var fileStream = File.Create(trainedDataPath))
+                {
+                    stream.CopyTo(fileStream);
                 }
             }
         }

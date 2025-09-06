@@ -31,6 +31,7 @@ ___
 
 - Extract the contents of the provided package<br />to any folder that has write privileges.<br />( *f.e.* `Desktop` | `C:\Apps\EPW Recaster` | ... )
 - Launch `EPW Recaster(.exe)`.
+ - Click the language button on the main form to toggle between English and Portuguese OCR (or edit `Config/Language.cfg` manually). Missing Tesseract language data such as `por.traineddata` is downloaded automatically.
 
 ### ❗ Additional Setup Prerequisites ❗
 
