@@ -240,11 +240,11 @@ namespace EPW_Recaster
                 InitializeMainGuiStyle();
 
                 SetLanguageFromCfg();
-                btnSwitchLanguage.Text = Tesseract.Ocr.Language.ToUpper();
+                btnSwitchLanguage.Text = Tesseract.Ocr.Language == "eng" ? "ENUS" : "PTBR";
             }
             catch (Exception ex)
             {
-                MessageBox.Show("" + ex, "Exception caught");
+                MessageBox.Show("" + ex, "Exceção capturada");
                 this.Close();
             }
         }
@@ -264,14 +264,14 @@ namespace EPW_Recaster
                 {
                     // Show a first launch warning to user.
                     MetroMessageBox.Show(this,
-                        "It seems you are not running this program as an administrator.\r\n" +
-                        "Some low level actions may not work when running this program.\r\n" +
+                        "Parece que você não está executando este programa como administrador.\r\n" +
+                        "Algumas ações de baixo nível podem não funcionar ao executar este programa.\r\n" +
                         //"in user mode ( f.e. sending click events programmatically ).\r\n" +
-                        "[ In order to run this program as an administrator: ]\r\n" +
-                        "  • Right-click '" + System.Diagnostics.Process.GetCurrentProcess().ProcessName + "(.exe)' > Choose 'Properties'.\r\n" +
-                        "  • 'Compatibility' tab > Check '☑ Run this program as an admin'.\r\n" +
-                        "  • Confirm by clicking 'OK' && relaunch.",
-                        "( Beep ... At First Launch Notification Only )", // Stop | Warning | Notification
+                        "[ Para executar este programa como administrador: ]\r\n" +
+                        "  • Clique com o botão direito em '" + System.Diagnostics.Process.GetCurrentProcess().ProcessName + "(.exe)' > Escolha 'Propriedades'.\r\n" +
+                        "  • Aba 'Compatibilidade' > Marque '☑ Executar este programa como administrador'.\r\n" +
+                        "  • Confirme clicando em 'OK' e reinicie.",
+                        "( Beep ... Notificação apenas no primeiro lançamento )", // Stop | Warning | Notification
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
@@ -385,10 +385,10 @@ namespace EPW_Recaster
                         //  Reason:  Code loop needs to add descriptive tooltips for all radio buttons (on this form).
                     }
 
-                    toolTip.SetToolTip(rBtn, "\r\n" +
-                        "ℹ\r\n" +
-                        "• ( Left-Click ) Switch to Condition List " + rBtn.Text + ".\r\n" +
-                        "• ( Right-Click ) Export | Import | Clear Condition List " + rBtn.Text + ".\r\n ");
+            toolTip.SetToolTip(rBtn, "\r\n" +
+                "ℹ\r\n" +
+                "• ( Clique esquerdo ) Alternar para Lista de Condições " + rBtn.Text + ".\r\n" +
+                "• ( Clique direito ) Exportar | Importar | Limpar Lista de Condições " + rBtn.Text + ".\r\n ");
                 }
             }
 
@@ -492,13 +492,13 @@ namespace EPW_Recaster
             dgConditions.DefaultCellStyle.Padding = new Padding(0, 3, 0, 3);
 
             // Column setup.
-            dgConditions.Columns.Add("Prefix", "Prefix");
+            dgConditions.Columns.Add("Prefix", "Prefixo");
             dgConditions.Columns["Prefix"].Width = 8;
             dgConditions.Columns["Prefix"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopRight;
-            dgConditions.Columns.Add("Stats", "Preferred Stat(s)");
+            dgConditions.Columns.Add("Stats", "Estatística(s) Preferida(s)");
             dgConditions.Columns["Stats"].Width = 231;
             dgConditions.Columns["Stats"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopLeft;
-            dgConditions.Columns.Add("Remove", "Remove");
+            dgConditions.Columns.Add("Remove", "Remover");
             dgConditions.Columns["Remove"].Width = 14;
             dgConditions.Columns["Remove"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopRight;
             dgConditions.Columns["Remove"].DefaultCellStyle.ForeColor = RedLightColor;
@@ -561,7 +561,7 @@ namespace EPW_Recaster
 
             #endregion Any Amount.
 
-            toolTip.SetToolTip(numSubAmount, "\r\nℹ\r\nIgnore white stats.\r\n( f.e. 'Phys. Res.' maximum = 4 )\r\n ");
+            toolTip.SetToolTip(numSubAmount, "\r\nℹ\r\nIgnore as estatísticas brancas.\r\n( ex.: 'Phys. Res.' máximo = 4 )\r\n ");
 
             // [DEVNOTE] Added mouse hover event based workaround in order to show tooltip longer than default 5 seconds.
             //toolTip.SetToolTip(chkbxAnyAmount, "\r\nℹ\r\nWhen checked:\r\n" +
@@ -617,11 +617,11 @@ namespace EPW_Recaster
             // Check labels.
             if (conditionListEntries.Count <= 1)
             {
-                gbConditions.Text = "Equipment must have :";
+                gbConditions.Text = "Equipamento deve ter :";
             }
             else
             {
-                gbConditions.Text = "Equipment must have (either) :";
+                gbConditions.Text = "Equipamento deve ter (qualquer um) :";
             }
             if (conditionListEntries.Count == 0)
             {
@@ -645,7 +645,7 @@ namespace EPW_Recaster
             string[] terms = File.ReadAllLines(Tesseract.Ocr.AssemblyCodeBaseDirectory + @"\Config\Stats.cfg");
 
             // Add a blank dummy.
-            cbSubSubSubTermsSource.Add("( optional additional stat )", "");
+            cbSubSubSubTermsSource.Add("( estatística adicional opcional )", "");
 
             // Add stats.
             foreach (string term in terms)
@@ -684,7 +684,7 @@ namespace EPW_Recaster
             string[] terms = File.ReadAllLines(Tesseract.Ocr.AssemblyCodeBaseDirectory + @"\Config\Stats.cfg");
 
             // Add a blank dummy.
-            cbSubSubTermsSource.Add("( optional additional stat )", "");
+            cbSubSubTermsSource.Add("( estatística adicional opcional )", "");
 
             // Add stats.
             foreach (string term in terms)
@@ -723,7 +723,7 @@ namespace EPW_Recaster
             string[] terms = File.ReadAllLines(Tesseract.Ocr.AssemblyCodeBaseDirectory + @"\Config\Stats.cfg");
 
             // Add a blank dummy.
-            cbSubTermsSource.Add("( optional additional stat )", "");
+            cbSubTermsSource.Add("( estatística adicional opcional )", "");
 
             // Add stats.
             foreach (string term in terms)
@@ -1021,9 +1021,9 @@ namespace EPW_Recaster
             if ((CurrentConditionListIndex + 1) > MaxConditionLists)
             {
                 MessageBox.Show(
-                    "[DEVNOTE] Can't load condition list with index " + CurrentConditionListIndex + "." +
-                    "\r\nExceeding maximum of " + MaxConditionLists + " lists (-1 for max. index) allowed." +
-                    "\r\nReturning an empty condition list."
+                    "[DEVNOTE] Não é possível carregar a lista de condições com o índice " + CurrentConditionListIndex + "." +
+                    "\r\nExcedendo o máximo de " + MaxConditionLists + " listas permitidas (-1 para índice máximo)." +
+                    "\r\nRetornando uma lista de condições vazia."
                     );
                 new ConditionList();
             }
@@ -1064,8 +1064,8 @@ namespace EPW_Recaster
             if ((CurrentConditionListIndex + 1) > MaxConditionLists)
             {
                 MessageBox.Show(
-                    "[DEVNOTE] Can't store condition list with index " + CurrentConditionListIndex + "." +
-                    "\r\nExceeding maximum of " + MaxConditionLists + " lists (-1 for max. index) allowed."
+                    "[DEVNOTE] Não é possível armazenar a lista de condições com o índice " + CurrentConditionListIndex + "." +
+                    "\r\nExcedendo o máximo de " + MaxConditionLists + " listas permitidas (-1 para índice máximo)."
                     );
                 return;
             }
@@ -1142,7 +1142,7 @@ namespace EPW_Recaster
                 {
                     if (i == 0)
                     {
-                        currentStatTerm += "[  fixed amount  |  any other stat allowed  ]\r\n";
+                        currentStatTerm += "[  quantidade fixa  |  qualquer outra estatística permitida  ]\r\n";
 
                         currentStatTerm += "  • min. ";
                     }
@@ -1161,7 +1161,7 @@ namespace EPW_Recaster
                 {
                     if (i == 0)
                     {
-                        currentStatTerm += "[  any combination  |  no other stat allowed  ]\r\n";
+                        currentStatTerm += "[  qualquer combinação  |  nenhuma outra estatística permitida  ]\r\n";
 
                         currentStatTerm += "  • min. 1 x ";
                     }
@@ -1229,7 +1229,7 @@ namespace EPW_Recaster
                     (conditionListEntry[0].LongTerm.ToLower().Contains("Atk".ToLower()) || conditionListEntry[0].LongTerm.ToLower().Contains("Def.".ToLower()))
                     )
                 {
-                    longTermEntry = longTermEntry.Replace("any other stat allowed", "no other stat possible");
+                    longTermEntry = longTermEntry.Replace("qualquer outra estatística permitida", "nenhuma outra estatística possível");
                 }
             }
             else
@@ -1237,7 +1237,7 @@ namespace EPW_Recaster
                 // [DEVNOTE] f.e. 4 x Channelling => Can't know in advance if it's for a weapon or for an armor piece, hence max at 5.
                 if (conditionListEntry.Sum(condition => condition.Amount) == 5)
                 {
-                    longTermEntry = longTermEntry.Replace("any other stat allowed", "no other stat possible");
+                    longTermEntry = longTermEntry.Replace("qualquer outra estatística permitida", "nenhuma outra estatística possível");
                 }
             }
 
@@ -1273,11 +1273,11 @@ namespace EPW_Recaster
             // ====================
             if (dgConditions.Rows.Count <= 1)
             {
-                gbConditions.Text = "Equipment must have :";
+                gbConditions.Text = "Equipamento deve ter :";
             }
             else
             {
-                gbConditions.Text = "Equipment must have (either) :";
+                gbConditions.Text = "Equipamento deve ter (qualquer um) :";
             }
             if (dgConditions.Rows.Count == 0)
             {
@@ -1298,11 +1298,11 @@ namespace EPW_Recaster
             // Check labels.
             if (dgConditions.Rows.Count <= 1)
             {
-                gbConditions.Text = "Equipment must have :";
+                gbConditions.Text = "Equipamento deve ter :";
             }
             else
             {
-                gbConditions.Text = "Equipment must have (either) :";
+                gbConditions.Text = "Equipamento deve ter (qualquer um) :";
             }
             if (dgConditions.Rows.Count == 0)
             {
@@ -1555,9 +1555,9 @@ namespace EPW_Recaster
                 {
                     // Show warning to user.
                     MetroMessageBox.Show(this,
-                                "The combined amount of preferred stats (" + totalStatAmount.ToString() + ") exceeds the maximum amount of (blue) stats." + Environment.NewLine +
-                                "( weapon = max. 5 stats | armor = max. 4 stats )" + Environment.NewLine +
-                                "Please check and correct the amount of each stat before adding it to the list.",
+                                "A quantidade combinada de estatísticas preferidas (" + totalStatAmount.ToString() + ") excede o número máximo de estatísticas (azuis)." + Environment.NewLine +
+                                "( arma = máx. 5 estatísticas | armadura = máx. 4 estatísticas )" + Environment.NewLine +
+                                "Verifique e corrija a quantidade de cada estatística antes de adicioná-la à lista.",
                                 "", // Warning
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
@@ -1619,7 +1619,7 @@ namespace EPW_Recaster
             if (!uniqueEntry)
             {
                 MetroMessageBox.Show(this,
-                                "A similar condition has already been added.",
+                                "Uma condição similar já foi adicionada.",
                                 "", // Note
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -2037,13 +2037,13 @@ namespace EPW_Recaster
                 int clickedConditionListIndex = Int32.Parse(rClickedRb.Text) - 1;
 
                 // Update the toolstrip items.
-                cmExportImport.Items[0].Text = "⮝ Copy / Export [ Condition List " + rClickedRb.Text + " ]";
+                cmExportImport.Items[0].Text = "⮝ Copiar / Exportar [ Lista de Condições " + rClickedRb.Text + " ]";
                 cmExportImport.Items[0].Tag = clickedConditionListIndex; // Tag condition list index to be exported.
 
-                cmExportImport.Items[1].Text = "⮟ Paste / Import [ Condition List " + rClickedRb.Text + " ]";
+                cmExportImport.Items[1].Text = "⮟ Colar / Importar [ Lista de Condições " + rClickedRb.Text + " ]";
                 cmExportImport.Items[1].Tag = clickedConditionListIndex; // Tag condition list index to be imported.
 
-                cmExportImport.Items[3].Text = "❌ Clear [ Condition List " + rClickedRb.Text + " ]";
+                cmExportImport.Items[3].Text = "❌ Limpar [ Lista de Condições " + rClickedRb.Text + " ]";
                 cmExportImport.Items[3].Tag = clickedConditionListIndex; // Tag condition list index to be cleared of all entries.
 
                 if (ConditionLists[clickedConditionListIndex].Count == 0)
@@ -2110,8 +2110,8 @@ namespace EPW_Recaster
 
             // Notify user.
             MetroMessageBox.Show(this,
-                        "[ Condition List " + (rightClickedConditionListIndex + 1) + " ] has been copied/exported to the clipboard.\n\n" +
-                        "Paste anywhere to share and/or ( use the copied text to )\nimport as/overwrite a condition list.",
+                        "[ Lista de Condições " + (rightClickedConditionListIndex + 1) + " ] foi copiada/exportada para a área de transferência.\n\n" +
+                        "Cole em qualquer lugar para compartilhar e/ou (use o texto copiado para)\nimportar/substituir uma lista de condições.",
                         "", // Note
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -2152,7 +2152,7 @@ namespace EPW_Recaster
             this.TopMost = false;
 
             // Set the default 'DefaultResponse' text.
-            string defaultResponse = "(  paste here using  ⌨ 【 CTRL 】+【 V 】  or  🖰  Right-Click > Paste  )";
+            string defaultResponse = "(  cole aqui usando  ⌨ 【 CTRL 】+【 V 】  ou  🖰  Clique direito > Colar  )";
 
             string clipboardText = null;
 
@@ -2190,9 +2190,9 @@ namespace EPW_Recaster
             {
                 // [DEVNOTE] Ahum ... "loaning" input box from VB.NET's default libraries ...
                 userResponse = Microsoft.VisualBasic.Interaction.InputBox(
-                    Prompt: "Paste the copied/clipboard text down below\r\n" +
-                            " in order to import/overwrite [ Condition List " + (rightClickedConditionListIndex + 1).ToString() + " ] .",
-                    Title: "Import As [ Condition List " + (rightClickedConditionListIndex + 1).ToString() + " ]",
+                    Prompt: "Cole o texto copiado/da área de transferência abaixo\r\n" +
+                            " para importar/sobrescrever [ Lista de Condições " + (rightClickedConditionListIndex + 1).ToString() + " ] .",
+                    Title: "Importar como [ Lista de Condições " + (rightClickedConditionListIndex + 1).ToString() + " ]",
                     DefaultResponse: string.IsNullOrEmpty(clipboardText) ? defaultResponse : clipboardText
                     ).Trim();
             }
@@ -2230,23 +2230,23 @@ namespace EPW_Recaster
 
                     if (importedListCondition.Count == 0)
                     {
-                        overwriteWith = "with an empty condition list.";
+                        overwriteWith = "com uma lista de condições vazia.";
                     }
                     else
                     {
                         if (importedListCondition.Count == 1)
-                            overwriteWith = "with an imported condition list containing\r\n< one > condition entry.";
+                            overwriteWith = "com uma lista de condições importada contendo\r\n< uma > entrada.";
                         else
-                            overwriteWith = "with an imported condition list containing\r\na total of < " + importedListCondition.Count.ToString() + " > condition entries.";
+                            overwriteWith = "com uma lista de condições importada contendo\r\num total de < " + importedListCondition.Count.ToString() + " > entradas.";
                     }
 
                     // Show overwrite note to user and get response.
                     DialogResult userConfirmationResponse =
                         MetroMessageBox.Show(this,
-                                "You are about to overwrite [ Condition List " + (rightClickedConditionListIndex + 1) + " ]\r\n" +
+                                "Você está prestes a sobrescrever [ Lista de Condições " + (rightClickedConditionListIndex + 1) + " ]\r\n" +
                                 overwriteWith + "\r\n" +
                                 "\r\n" +
-                                "Continue ?",
+                                "Continuar?",
                                 "", // Stop | Warning
                                 MessageBoxButtons.OKCancel, MessageBoxIcon.Stop);
 
@@ -2275,7 +2275,7 @@ namespace EPW_Recaster
 
                     // Show warning to user.
                     MetroMessageBox.Show(this,
-                                "Whoops ... the provided text does not correspond to a valid condition list.",
+                                "Ops... o texto fornecido não corresponde a uma lista de condições válida.",
                                 "", // Error
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -2333,9 +2333,9 @@ namespace EPW_Recaster
             // Show deletion note to user and get response.
             DialogResult userConfirmationResponse =
                 MetroMessageBox.Show(this,
-                        "You are about to clear all entries of [ Condition List " + (rightClickedConditionListIndex + 1) + " ] .\r\n" +
+                        "Você está prestes a limpar todas as entradas da [ Lista de Condições " + (rightClickedConditionListIndex + 1) + " ] .\r\n" +
                         "\r\n" +
-                        "Continue ?",
+                        "Continuar?",
                         "", // Stop | Warning
                         MessageBoxButtons.OKCancel, MessageBoxIcon.Stop);
 
@@ -2412,9 +2412,9 @@ namespace EPW_Recaster
             // Mouse Hover Event based workaround in order to show tooltip longer than default 5 seconds.
             // Can (apparently) go up to 32,767 milliseconds.
             // Reference: https://stackoverflow.com/a/8225836
-            toolTip.Show("\r\nℹ\r\nWhen checked:\r\n" +
-                "✅ Accept any amount\r\nof each of the selected stats\r\n( to be detected at least once ).\r\n" +
-                "❌ Won't accept if a stat is detected\r\nothers than the ones listed\r\nor when a listed stat is missing.\r\n ",
+            toolTip.Show("\r\nℹ\r\nQuando marcado:\r\n" +
+                "✅ Aceita qualquer quantidade\r\nde cada uma das estatísticas selecionadas\r\n(a ser detectada pelo menos uma vez).\r\n" +
+                "❌ Não aceita se uma estatística for detectada\r\ndiferente das listadas\r\nou quando uma estatística listada estiver ausente.\r\n ",
                 chkbxAnyAmount,
                 duration: 30000
                 );

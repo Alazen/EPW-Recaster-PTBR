@@ -46,11 +46,11 @@ namespace EPW_Recaster
             // Tooltip(s).
             toolTip.Theme = MetroThemeStyle.Dark;
 
-            toolTip.SetToolTip(btnChainForms, "\r\nAttach | Detach Forms\r\n ");
-            toolTip.SetToolTip(btnLogFolder, "\r\nOpen Log Folder\r\n ");
-            toolTip.SetToolTip(numMaxRolls, "\r\nℹ\r\nAlso stops rolling\r\nwhen in-game\r\nPerfect Elements\r\nare depleted.\r\n ");
-            toolTip.SetToolTip(lblMaxRolls, "\r\nℹ\r\nAlso stops rolling\r\nwhen in-game\r\nPerfect Elements\r\nare depleted.\r\n ");
-            toolTip.SetToolTip(chkbxPreviewCapture, "\r\nℹ\r\nWhen checked, will only\r\nperform a single capture.\r\nNo rolls will be\r\nperformed in-game.\r\n ");
+            toolTip.SetToolTip(btnChainForms, "\r\nAnexar | Desanexar Formulários\r\n ");
+            toolTip.SetToolTip(btnLogFolder, "\r\nAbrir Pasta de Logs\r\n ");
+            toolTip.SetToolTip(numMaxRolls, "\r\nℹ\r\nTambém para de rolar\r\nquando os\r\nPerfect Elements no jogo\r\nacabam.\r\n ");
+            toolTip.SetToolTip(lblMaxRolls, "\r\nℹ\r\nTambém para de rolar\r\nquando os\r\nPerfect Elements no jogo\r\nacabam.\r\n ");
+            toolTip.SetToolTip(chkbxPreviewCapture, "\r\nℹ\r\nQuando marcado, apenas\r\nrealiza uma captura.\r\nNenhuma rolagem será\r\nfeita no jogo.\r\n ");
         }
 
         #endregion Constructors | Initialization Methods.
@@ -63,12 +63,12 @@ namespace EPW_Recaster
 
             if (MainForm.dgConditions.Rows.Count > 0)
             {
-                if (btnOcr.Text.Contains("Start"))
+                if (btnOcr.Text.Contains("Iniciar"))
                 {
                     if (MainForm.WindowState == FormWindowState.Minimized)
                         MainForm.WindowState = FormWindowState.Normal;
 
-                    btnOcr.Text = "Stop";
+                    btnOcr.Text = "Parar";
                     btnOcr.Enabled = true;
 
                     #region Start Ocr.
@@ -105,9 +105,9 @@ namespace EPW_Recaster
                         rTxtBoxInfo.AppendText(Environment.NewLine);
                         rTxtBoxInfo.AppendText("=========================");
                         rTxtBoxInfo.AppendText(Environment.NewLine);
-                        rTxtBoxInfo.AppendText("Process completed.");
+                        rTxtBoxInfo.AppendText("Processo concluído.");
                         rTxtBoxInfo.AppendText(Environment.NewLine);
-                        rTxtBoxInfo.AppendText("Runtime: " + diffResult.Humanize(3) + ".");
+                        rTxtBoxInfo.AppendText("Tempo de execução: " + diffResult.Humanize(3) + ".");
                         rTxtBoxInfo.AppendText(Environment.NewLine + Environment.NewLine);
 
                         // Auto scroll to bottom.
@@ -118,7 +118,7 @@ namespace EPW_Recaster
                         }
 
                         // Reset button to 'Start'.
-                        btnOcr.Text = "Start";
+                        btnOcr.Text = "Iniciar";
                         btnOcr.Enabled = true;
                     }
                     catch (OperationCanceledException)
@@ -132,9 +132,9 @@ namespace EPW_Recaster
                         rTxtBoxInfo.AppendText(Environment.NewLine);
                         rTxtBoxInfo.AppendText("=========================");
                         rTxtBoxInfo.AppendText(Environment.NewLine);
-                        rTxtBoxInfo.AppendText("Process halted.");
+                        rTxtBoxInfo.AppendText("Processo interrompido.");
                         rTxtBoxInfo.AppendText(Environment.NewLine);
-                        rTxtBoxInfo.AppendText("Runtime: " + diffResult.Humanize(3) + ".");
+                        rTxtBoxInfo.AppendText("Tempo de execução: " + diffResult.Humanize(3) + ".");
                         rTxtBoxInfo.AppendText(Environment.NewLine + Environment.NewLine);
 
                         // Auto scroll to bottom.
@@ -144,7 +144,7 @@ namespace EPW_Recaster
                             rTxtBoxInfo.ScrollToCaret();
                         }
 
-                        btnOcr.Text = "Start";
+                        btnOcr.Text = "Iniciar";
                         btnOcr.Enabled = true;
 
                         MainForm.WindowState = FormWindowState.Normal;
@@ -162,7 +162,7 @@ namespace EPW_Recaster
                         rTxtBoxInfo.AppendText(Environment.NewLine);
                         rTxtBoxInfo.AppendText(ex.GetType().Name + ": " + ex.Message);
                         rTxtBoxInfo.AppendText(Environment.NewLine);
-                        rTxtBoxInfo.AppendText("Runtime: " + diffResult.Humanize(3) + ".");
+                        rTxtBoxInfo.AppendText("Tempo de execução: " + diffResult.Humanize(3) + ".");
                         rTxtBoxInfo.AppendText(Environment.NewLine + Environment.NewLine);
 
                         // Auto scroll to bottom.
@@ -175,7 +175,7 @@ namespace EPW_Recaster
                         if (MainForm.Ocr_CancellationTokenSource != null)
                             MainForm.Ocr_CancellationTokenSource.Cancel();
 
-                        btnOcr.Text = "Start";
+                        btnOcr.Text = "Iniciar";
                         btnOcr.Enabled = true;
 
                         MainForm.WindowState = FormWindowState.Normal;
@@ -199,10 +199,10 @@ namespace EPW_Recaster
             else
             {
                 MetroFramework.MetroMessageBox.Show(MainForm,
-                                "Please add at least one condition to look for.\n" +
-                                "1. Select a preferred amount and stat ( f.e. '2 x Channelling' ).\n" +
-                                "2. (Optional) Select additional amount(s) and stat(s).\n" +
-                                "3. Click the ➕ button.",
+                                "Por favor, adicione ao menos uma condição para procurar.\n" +
+                                "1. Selecione uma quantidade e estatística preferida (ex.: '2 x Channelling').\n" +
+                                "2. (Opcional) Selecione quantidade(s) e estatística(s) adicionais.\n" +
+                                "3. Clique no botão ➕.",
                                 "", // Note
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -319,7 +319,7 @@ namespace EPW_Recaster
             if (chkbxPreviewCapture.Checked)
             {
                 PreviewCapture = true;
-                chkbxPreviewCapture.Text = "Preview ( no rolls | OCR only )";
+                chkbxPreviewCapture.Text = "Pré-visualizar (sem rolagens | apenas OCR)";
 
                 // Don't show number of rolls in preview mode.
                 lblMaxRolls.Visible = false;
@@ -328,7 +328,7 @@ namespace EPW_Recaster
             else
             {
                 PreviewCapture = false;
-                chkbxPreviewCapture.Text = "Preview ?";
+                chkbxPreviewCapture.Text = "Pré-visualizar?";
 
                 // Show number of rolls when not in preview mode.
                 lblMaxRolls.Visible = true;

@@ -86,7 +86,7 @@ namespace EPW_Recaster
             this.btnSwitchLanguage.Name = "btnSwitchLanguage";
             this.btnSwitchLanguage.Size = new System.Drawing.Size(75, 23);
             this.btnSwitchLanguage.TabIndex = 2;
-            this.btnSwitchLanguage.Text = "ENG";
+            this.btnSwitchLanguage.Text = "PTBR";
             this.btnSwitchLanguage.UseSelectable = true;
             this.btnSwitchLanguage.Click += new System.EventHandler(this.btnSwitchLanguage_Click);
             //
@@ -223,7 +223,7 @@ namespace EPW_Recaster
             this.lblCaptureRegion.Name = "lblCaptureRegion";
             this.lblCaptureRegion.Size = new System.Drawing.Size(116, 16);
             this.lblCaptureRegion.TabIndex = 20;
-            this.lblCaptureRegion.Text = "( Capture Region )";
+            this.lblCaptureRegion.Text = "( Região de Captura )";
             // 
             // lblConditionsNote
             // 
@@ -235,7 +235,7 @@ namespace EPW_Recaster
             this.lblConditionsNote.Name = "lblConditionsNote";
             this.lblConditionsNote.Size = new System.Drawing.Size(243, 19);
             this.lblConditionsNote.TabIndex = 22;
-            this.lblConditionsNote.Text = "Add at least one condition to be matched:";
+            this.lblConditionsNote.Text = "Adicione ao menos uma condição para combinar:";
             this.lblConditionsNote.UseCustomBackColor = true;
             this.lblConditionsNote.UseCustomForeColor = true;
             // 
@@ -268,7 +268,7 @@ namespace EPW_Recaster
             this.gbConditions.Size = new System.Drawing.Size(275, 249);
             this.gbConditions.TabIndex = 23;
             this.gbConditions.TabStop = false;
-            this.gbConditions.Text = "Must have :";
+            this.gbConditions.Text = "Deve ter :";
             this.gbConditions.Paint += new System.Windows.Forms.PaintEventHandler(this.gbDotted_Paint);
             // 
             // cbSubSubSubTerms
@@ -320,7 +320,7 @@ namespace EPW_Recaster
             this.chkbxAnyAmount.Name = "chkbxAnyAmount";
             this.chkbxAnyAmount.Size = new System.Drawing.Size(250, 15);
             this.chkbxAnyAmount.TabIndex = 29;
-            this.chkbxAnyAmount.Text = "Any combination of selected stats only ?";
+            this.chkbxAnyAmount.Text = "Qualquer combinação das estatísticas selecionadas?";
             this.chkbxAnyAmount.UseSelectable = true;
             this.chkbxAnyAmount.Visible = false;
             this.chkbxAnyAmount.CheckedChanged += new System.EventHandler(this.chkbxAnyAmount_CheckedChanged);
@@ -557,7 +557,7 @@ namespace EPW_Recaster
             this.lblCurrentList.Name = "lblCurrentList";
             this.lblCurrentList.Size = new System.Drawing.Size(82, 13);
             this.lblCurrentList.TabIndex = 24;
-            this.lblCurrentList.Text = "[ Condition List ]";
+            this.lblCurrentList.Text = "[ Lista de Condições ]";
             // 
             // cmExportImport
             // 
@@ -574,14 +574,14 @@ namespace EPW_Recaster
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
             this.exportToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.exportToolStripMenuItem.Text = "⮝ Export";
+            this.exportToolStripMenuItem.Text = "⮝ Exportar";
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
             // 
             // importToolStripMenuItem
             // 
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
             this.importToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.importToolStripMenuItem.Text = "⮟ Import";
+            this.importToolStripMenuItem.Text = "⮟ Importar";
             this.importToolStripMenuItem.Click += new System.EventHandler(this.importToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
@@ -593,7 +593,7 @@ namespace EPW_Recaster
             // 
             this.clearListToolStripMenuItem.Name = "clearListToolStripMenuItem";
             this.clearListToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.clearListToolStripMenuItem.Text = "❌ Clear";
+            this.clearListToolStripMenuItem.Text = "❌ Limpar";
             this.clearListToolStripMenuItem.Click += new System.EventHandler(this.clearListToolStripMenuItem_Click);
             // 
             // MainGui
