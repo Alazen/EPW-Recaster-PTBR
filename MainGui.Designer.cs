@@ -48,6 +48,8 @@ namespace EPW_Recaster
             this.cbSubSubSubTerms = new System.Windows.Forms.ComboBox();
             this.cbSubSubTerms = new System.Windows.Forms.ComboBox();
             this.cbSubTerms = new System.Windows.Forms.ComboBox();
+            this.btnParamsCfg = new MetroFramework.Controls.MetroButton();
+            this.btnStatsCfg = new MetroFramework.Controls.MetroButton();
             this.chkbxAnyAmount = new MetroFramework.Controls.MetroCheckBox();
             this.numSubSubAmount = new System.Windows.Forms.NumericUpDown();
             this.numSubAmount = new System.Windows.Forms.NumericUpDown();
@@ -247,6 +249,8 @@ namespace EPW_Recaster
             this.gbConditions.Controls.Add(this.cbSubSubTerms);
             this.gbConditions.Controls.Add(this.cbSubTerms);
             this.gbConditions.Controls.Add(this.cbTerms);
+            this.gbConditions.Controls.Add(this.btnStatsCfg);
+            this.gbConditions.Controls.Add(this.btnParamsCfg);
             this.gbConditions.Controls.Add(this.chkbxAnyAmount);
             this.gbConditions.Controls.Add(this.numSubSubAmount);
             this.gbConditions.Controls.Add(this.numSubAmount);
@@ -265,7 +269,7 @@ namespace EPW_Recaster
             this.gbConditions.Margin = new System.Windows.Forms.Padding(15);
             this.gbConditions.Name = "gbConditions";
             this.gbConditions.Padding = new System.Windows.Forms.Padding(10);
-            this.gbConditions.Size = new System.Drawing.Size(275, 249);
+            this.gbConditions.Size = new System.Drawing.Size(275, 279);
             this.gbConditions.TabIndex = 23;
             this.gbConditions.TabStop = false;
             this.gbConditions.Text = "Deve ter :";
@@ -312,9 +316,31 @@ namespace EPW_Recaster
             this.cbSubTerms.TabIndex = 15;
             this.cbSubTerms.SelectedIndexChanged += new System.EventHandler(this.cbSubTerms_SelectedIndexChanged);
             this.cbSubTerms.DropDownClosed += new System.EventHandler(this.cbSubTerms_DropDownClosed);
-            // 
+            //
+            // btnParamsCfg
+            //
+            this.btnParamsCfg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnParamsCfg.Location = new System.Drawing.Point(14, 242);
+            this.btnParamsCfg.Name = "btnParamsCfg";
+            this.btnParamsCfg.Size = new System.Drawing.Size(100, 23);
+            this.btnParamsCfg.TabIndex = 33;
+            this.btnParamsCfg.Text = "Params.cfg";
+            this.btnParamsCfg.UseSelectable = true;
+            this.btnParamsCfg.Click += new System.EventHandler(this.btnParamsCfg_Click);
+            //
+            // btnStatsCfg
+            //
+            this.btnStatsCfg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnStatsCfg.Location = new System.Drawing.Point(134, 242);
+            this.btnStatsCfg.Name = "btnStatsCfg";
+            this.btnStatsCfg.Size = new System.Drawing.Size(100, 23);
+            this.btnStatsCfg.TabIndex = 34;
+            this.btnStatsCfg.Text = "Stats.cfg";
+            this.btnStatsCfg.UseSelectable = true;
+            this.btnStatsCfg.Click += new System.EventHandler(this.btnStatsCfg_Click);
+            //
             // chkbxAnyAmount
-            // 
+            //
             this.chkbxAnyAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.chkbxAnyAmount.Location = new System.Drawing.Point(14, 222);
             this.chkbxAnyAmount.Name = "chkbxAnyAmount";
@@ -671,6 +697,8 @@ namespace EPW_Recaster
         private System.Windows.Forms.NumericUpDown numSubSubAmount;
         internal MetroFramework.Controls.MetroLabel lblSubSubAmount;
         internal MetroFramework.Controls.MetroCheckBox chkbxAnyAmount;
+        private MetroFramework.Controls.MetroButton btnParamsCfg;
+        private MetroFramework.Controls.MetroButton btnStatsCfg;
         private System.Windows.Forms.ComboBox cbSubSubSubTerms;
         private System.Windows.Forms.NumericUpDown numSubSubSubAmount;
         internal MetroFramework.Controls.MetroLabel lblSubSubSubAmount;

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -2363,6 +2364,36 @@ namespace EPW_Recaster
                 // Programmatically (left-)click the (original) radio button,
                 // triggering a focus on/restoring/showing its list.
                 AllRadioButtons_Click(selectedBtnBeforeClear, new MouseEventArgs(MouseButtons.Left, 1, 0, 0, 0));
+            }
+        }
+
+        private void btnParamsCfg_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start(Tesseract.Ocr.AssemblyCodeBaseDirectory + @"\Config\Params.cfg");
+            }
+            catch (Exception ex)
+            {
+                MetroMessageBox.Show(this,
+                    $"Não foi possível abrir Params.cfg: {ex.Message}",
+                    "",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnStatsCfg_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start(Tesseract.Ocr.AssemblyCodeBaseDirectory + @"\Config\Stats.cfg");
+            }
+            catch (Exception ex)
+            {
+                MetroMessageBox.Show(this,
+                    $"Não foi possível abrir Stats.cfg: {ex.Message}",
+                    "",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
