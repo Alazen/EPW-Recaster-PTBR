@@ -31,6 +31,17 @@ namespace EPW_Recaster
 
         private double CaptureRegionHeightClipping { get; set; } = 0.75;
 
+        // Relative button positions within the capture region (center point ratios)
+        private double retainBtnXRatio = 0.21;
+        private double retainBtnYRatio = 0.879;
+        private double newBtnXRatio = 0.81;
+        private double newBtnYRatio = 0.879;
+        private double reproduceBtnXRatio = 0.52;
+        private double reproduceBtnYRatio = 0.92;
+
+        private Control dragButton = null;
+        private Point dragOffset;
+
         #endregion Main Gui.
 
         #region Info Gui.
@@ -2457,29 +2468,85 @@ namespace EPW_Recaster
             int currHeight = seeThroughRegion.Height;
 
             // 'Retain the old attribute'.
-            int positionRetainX = (int)Math.Round(0.21 * currWidth);
-            int positionRetainY = (int)Math.Round(0.879 * currHeight);
+            int positionRetainX = (int)Math.Round(retainBtnXRatio * currWidth);
+            int positionRetainY = (int)Math.Round(retainBtnYRatio * currHeight);
 
             btnRetain.Location = new Point(
                 seeThroughRegion.Location.X + (int)positionRetainX - (int)Math.Round(0.50 * btnRetain.Width),
                 seeThroughRegion.Location.Y + (int)positionRetainY - (int)Math.Round(0.50 * btnRetain.Height));
 
             // 'Use the new attribute'.
-            int positionNewX = (int)Math.Round(0.81 * currWidth);
-            int positionNewY = (int)Math.Round(0.879 * currHeight);
+            int positionNewX = (int)Math.Round(newBtnXRatio * currWidth);
+            int positionNewY = (int)Math.Round(newBtnYRatio * currHeight);
 
             btnNew.Location = new Point(
                 seeThroughRegion.Location.X + (int)positionNewX - (int)Math.Round(0.50 * btnNew.Width),
                 seeThroughRegion.Location.Y + (int)positionNewY - (int)Math.Round(0.50 * btnNew.Height));
 
             // 'Reproduce'.
-            int positionReproduceX = (int)Math.Round(0.52 * currWidth);
-            int positionReproduceY = (int)Math.Round(0.92 * currHeight);
+            int positionReproduceX = (int)Math.Round(reproduceBtnXRatio * currWidth);
+            int positionReproduceY = (int)Math.Round(reproduceBtnYRatio * currHeight);
 
             btnReproduce.Location = new Point(
                 seeThroughRegion.Location.X + (int)positionReproduceX - (int)Math.Round(0.50 * btnReproduce.Width),
                 seeThroughRegion.Location.Y + (int)positionReproduceY - (int)Math.Round(0.50 * btnReproduce.Height));
         }
+
+        #region Button drag handlers.
+
+        private void MoveButton_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                dragButton = sender as Control;
+                dragOffset = e.Location;
+            }
+        }
+
+        private void MoveButton_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (dragButton != null)
+            {
+                int newX = dragButton.Left + e.X - dragOffset.X;
+                int newY = dragButton.Top + e.Y - dragOffset.Y;
+
+                Rectangle bounds = seeThroughRegion.Bounds;
+                newX = Math.Max(bounds.Left, Math.Min(newX, bounds.Right - dragButton.Width));
+                newY = Math.Max(bounds.Top, Math.Min(newY, bounds.Bottom - dragButton.Height));
+
+                dragButton.Location = new Point(newX, newY);
+            }
+        }
+
+        private void MoveButton_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (dragButton != null)
+            {
+                Rectangle bounds = seeThroughRegion.Bounds;
+                double percentX = (dragButton.Left - bounds.Left + dragButton.Width / 2.0) / seeThroughRegion.Width;
+                double percentY = (dragButton.Top - bounds.Top + dragButton.Height / 2.0) / seeThroughRegion.Height;
+
+                if (dragButton == btnRetain)
+                {
+                    retainBtnXRatio = percentX;
+                    retainBtnYRatio = percentY;
+                }
+                else if (dragButton == btnNew)
+                {
+                    newBtnXRatio = percentX;
+                    newBtnYRatio = percentY;
+                }
+                else if (dragButton == btnReproduce)
+                {
+                    reproduceBtnXRatio = percentX;
+                    reproduceBtnYRatio = percentY;
+                }
+            }
+
+            dragButton = null;
+        }
+
+        #endregion Button drag handlers.
 
         #region Drag and drop rows reorder related.
 
