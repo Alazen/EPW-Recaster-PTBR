@@ -33,6 +33,7 @@ namespace EPW_Recaster
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainGui));
             this.seeThroughRegion = new System.Windows.Forms.PictureBox();
             this.metroStyleManager = new MetroFramework.Components.MetroStyleManager(this.components);
+            this.btnSwitchLanguage = new MetroFramework.Controls.MetroButton();
             this.btnAddCondition = new MetroFramework.Controls.MetroButton();
             this.numAmount = new System.Windows.Forms.NumericUpDown();
             this.lblAmount = new MetroFramework.Controls.MetroLabel();
@@ -78,10 +79,20 @@ namespace EPW_Recaster
             ((System.ComponentModel.ISupportInitialize)(this.numSubSubSubAmount)).BeginInit();
             this.cmExportImport.SuspendLayout();
             this.SuspendLayout();
-            // 
+            //
+            // btnSwitchLanguage
+            //
+            this.btnSwitchLanguage.Location = new System.Drawing.Point(23, 54);
+            this.btnSwitchLanguage.Name = "btnSwitchLanguage";
+            this.btnSwitchLanguage.Size = new System.Drawing.Size(75, 23);
+            this.btnSwitchLanguage.TabIndex = 2;
+            this.btnSwitchLanguage.Text = "ENG";
+            this.btnSwitchLanguage.UseSelectable = true;
+            this.btnSwitchLanguage.Click += new System.EventHandler(this.btnSwitchLanguage_Click);
+            //
             // seeThroughRegion
-            // 
-            this.seeThroughRegion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            //
+            this.seeThroughRegion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.seeThroughRegion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -602,6 +613,7 @@ namespace EPW_Recaster
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.btnRetain);
             this.Controls.Add(this.captureRegion);
+            this.Controls.Add(this.btnSwitchLanguage);
             this.Controls.Add(this.seeThroughRegion);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -637,6 +649,7 @@ namespace EPW_Recaster
 
         #endregion
         private System.Windows.Forms.PictureBox seeThroughRegion;
+        private MetroFramework.Controls.MetroButton btnSwitchLanguage;
         private MetroFramework.Controls.MetroButton btnAddCondition;
         private System.Windows.Forms.NumericUpDown numAmount;
         private System.Windows.Forms.ComboBox cbTerms;

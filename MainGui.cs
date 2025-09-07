@@ -238,6 +238,9 @@ namespace EPW_Recaster
                 InitializeProgressHandling();
 
                 InitializeMainGuiStyle();
+
+                SetLanguageFromCfg();
+                btnSwitchLanguage.Text = Tesseract.Ocr.Language.ToUpper();
             }
             catch (Exception ex)
             {
@@ -1320,6 +1323,11 @@ namespace EPW_Recaster
         private void MainGui_Shown(object sender, EventArgs e)
         {
             CheckAdminPrivileges();
+        }
+
+        private void btnSwitchLanguage_Click(object sender, EventArgs e)
+        {
+            ToggleLanguage();
         }
 
         private void btnAddCondition_Click(object sender, EventArgs e)
