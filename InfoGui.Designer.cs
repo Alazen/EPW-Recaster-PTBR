@@ -65,7 +65,7 @@ namespace EPW_Recaster
             this.btnOcr.Name = "btnOcr";
             this.btnOcr.Size = new System.Drawing.Size(55, 23);
             this.btnOcr.TabIndex = 3;
-            this.btnOcr.Text = "Start";
+            this.btnOcr.Text = "Iniciar";
             this.btnOcr.UseSelectable = true;
             this.btnOcr.Click += new System.EventHandler(this.btnOcr_Click);
             // 
@@ -88,7 +88,7 @@ namespace EPW_Recaster
             this.chkbxPreviewCapture.Name = "chkbxPreviewCapture";
             this.chkbxPreviewCapture.Size = new System.Drawing.Size(72, 15);
             this.chkbxPreviewCapture.TabIndex = 5;
-            this.chkbxPreviewCapture.Text = "Preview ?";
+            this.chkbxPreviewCapture.Text = "Pré-visualizar?";
             this.chkbxPreviewCapture.UseSelectable = true;
             this.chkbxPreviewCapture.CheckStateChanged += new System.EventHandler(this.chkbxPreviewCapture_CheckStateChanged);
             // 
@@ -128,7 +128,7 @@ namespace EPW_Recaster
             this.lblMaxRolls.Name = "lblMaxRolls";
             this.lblMaxRolls.Size = new System.Drawing.Size(58, 22);
             this.lblMaxRolls.TabIndex = 15;
-            this.lblMaxRolls.Text = "Roll Limit";
+            this.lblMaxRolls.Text = "Limite de Rolagens";
             this.lblMaxRolls.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnLogFolder
@@ -157,7 +157,7 @@ namespace EPW_Recaster
             this.chkbxAutoScrollBottom.Name = "chkbxAutoScrollBottom";
             this.chkbxAutoScrollBottom.Size = new System.Drawing.Size(124, 15);
             this.chkbxAutoScrollBottom.TabIndex = 17;
-            this.chkbxAutoScrollBottom.Text = "Auto Bottom Scroll";
+            this.chkbxAutoScrollBottom.Text = "Rolagem automática para o final";
             this.chkbxAutoScrollBottom.UseSelectable = true;
             this.chkbxAutoScrollBottom.Visible = false;
             // 

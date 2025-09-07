@@ -48,6 +48,8 @@ namespace EPW_Recaster
             this.cbSubSubSubTerms = new System.Windows.Forms.ComboBox();
             this.cbSubSubTerms = new System.Windows.Forms.ComboBox();
             this.cbSubTerms = new System.Windows.Forms.ComboBox();
+            this.btnParamsCfg = new MetroFramework.Controls.MetroButton();
+            this.btnStatsCfg = new MetroFramework.Controls.MetroButton();
             this.chkbxAnyAmount = new MetroFramework.Controls.MetroCheckBox();
             this.numSubSubAmount = new System.Windows.Forms.NumericUpDown();
             this.numSubAmount = new System.Windows.Forms.NumericUpDown();
@@ -86,7 +88,7 @@ namespace EPW_Recaster
             this.btnSwitchLanguage.Name = "btnSwitchLanguage";
             this.btnSwitchLanguage.Size = new System.Drawing.Size(75, 23);
             this.btnSwitchLanguage.TabIndex = 2;
-            this.btnSwitchLanguage.Text = "ENG";
+            this.btnSwitchLanguage.Text = "PTBR";
             this.btnSwitchLanguage.UseSelectable = true;
             this.btnSwitchLanguage.Click += new System.EventHandler(this.btnSwitchLanguage_Click);
             //
@@ -223,7 +225,7 @@ namespace EPW_Recaster
             this.lblCaptureRegion.Name = "lblCaptureRegion";
             this.lblCaptureRegion.Size = new System.Drawing.Size(116, 16);
             this.lblCaptureRegion.TabIndex = 20;
-            this.lblCaptureRegion.Text = "( Capture Region )";
+            this.lblCaptureRegion.Text = "( Região de Captura )";
             // 
             // lblConditionsNote
             // 
@@ -235,7 +237,7 @@ namespace EPW_Recaster
             this.lblConditionsNote.Name = "lblConditionsNote";
             this.lblConditionsNote.Size = new System.Drawing.Size(243, 19);
             this.lblConditionsNote.TabIndex = 22;
-            this.lblConditionsNote.Text = "Add at least one condition to be matched:";
+            this.lblConditionsNote.Text = "Adicione ao menos uma condição para combinar:";
             this.lblConditionsNote.UseCustomBackColor = true;
             this.lblConditionsNote.UseCustomForeColor = true;
             // 
@@ -247,6 +249,8 @@ namespace EPW_Recaster
             this.gbConditions.Controls.Add(this.cbSubSubTerms);
             this.gbConditions.Controls.Add(this.cbSubTerms);
             this.gbConditions.Controls.Add(this.cbTerms);
+            this.gbConditions.Controls.Add(this.btnStatsCfg);
+            this.gbConditions.Controls.Add(this.btnParamsCfg);
             this.gbConditions.Controls.Add(this.chkbxAnyAmount);
             this.gbConditions.Controls.Add(this.numSubSubAmount);
             this.gbConditions.Controls.Add(this.numSubAmount);
@@ -265,10 +269,10 @@ namespace EPW_Recaster
             this.gbConditions.Margin = new System.Windows.Forms.Padding(15);
             this.gbConditions.Name = "gbConditions";
             this.gbConditions.Padding = new System.Windows.Forms.Padding(10);
-            this.gbConditions.Size = new System.Drawing.Size(275, 249);
+            this.gbConditions.Size = new System.Drawing.Size(275, 279);
             this.gbConditions.TabIndex = 23;
             this.gbConditions.TabStop = false;
-            this.gbConditions.Text = "Must have :";
+            this.gbConditions.Text = "Deve ter :";
             this.gbConditions.Paint += new System.Windows.Forms.PaintEventHandler(this.gbDotted_Paint);
             // 
             // cbSubSubSubTerms
@@ -312,15 +316,37 @@ namespace EPW_Recaster
             this.cbSubTerms.TabIndex = 15;
             this.cbSubTerms.SelectedIndexChanged += new System.EventHandler(this.cbSubTerms_SelectedIndexChanged);
             this.cbSubTerms.DropDownClosed += new System.EventHandler(this.cbSubTerms_DropDownClosed);
-            // 
+            //
+            // btnParamsCfg
+            //
+            this.btnParamsCfg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnParamsCfg.Location = new System.Drawing.Point(14, 242);
+            this.btnParamsCfg.Name = "btnParamsCfg";
+            this.btnParamsCfg.Size = new System.Drawing.Size(100, 23);
+            this.btnParamsCfg.TabIndex = 33;
+            this.btnParamsCfg.Text = "Params.cfg";
+            this.btnParamsCfg.UseSelectable = true;
+            this.btnParamsCfg.Click += new System.EventHandler(this.btnParamsCfg_Click);
+            //
+            // btnStatsCfg
+            //
+            this.btnStatsCfg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnStatsCfg.Location = new System.Drawing.Point(134, 242);
+            this.btnStatsCfg.Name = "btnStatsCfg";
+            this.btnStatsCfg.Size = new System.Drawing.Size(100, 23);
+            this.btnStatsCfg.TabIndex = 34;
+            this.btnStatsCfg.Text = "Stats.cfg";
+            this.btnStatsCfg.UseSelectable = true;
+            this.btnStatsCfg.Click += new System.EventHandler(this.btnStatsCfg_Click);
+            //
             // chkbxAnyAmount
-            // 
+            //
             this.chkbxAnyAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.chkbxAnyAmount.Location = new System.Drawing.Point(14, 222);
             this.chkbxAnyAmount.Name = "chkbxAnyAmount";
             this.chkbxAnyAmount.Size = new System.Drawing.Size(250, 15);
             this.chkbxAnyAmount.TabIndex = 29;
-            this.chkbxAnyAmount.Text = "Any combination of selected stats only ?";
+            this.chkbxAnyAmount.Text = "Qualquer combinação das estatísticas selecionadas?";
             this.chkbxAnyAmount.UseSelectable = true;
             this.chkbxAnyAmount.Visible = false;
             this.chkbxAnyAmount.CheckedChanged += new System.EventHandler(this.chkbxAnyAmount_CheckedChanged);
@@ -557,7 +583,7 @@ namespace EPW_Recaster
             this.lblCurrentList.Name = "lblCurrentList";
             this.lblCurrentList.Size = new System.Drawing.Size(82, 13);
             this.lblCurrentList.TabIndex = 24;
-            this.lblCurrentList.Text = "[ Condition List ]";
+            this.lblCurrentList.Text = "[ Lista de Condições ]";
             // 
             // cmExportImport
             // 
@@ -574,14 +600,14 @@ namespace EPW_Recaster
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
             this.exportToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.exportToolStripMenuItem.Text = "⮝ Export";
+            this.exportToolStripMenuItem.Text = "⮝ Exportar";
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
             // 
             // importToolStripMenuItem
             // 
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
             this.importToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.importToolStripMenuItem.Text = "⮟ Import";
+            this.importToolStripMenuItem.Text = "⮟ Importar";
             this.importToolStripMenuItem.Click += new System.EventHandler(this.importToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
@@ -593,7 +619,7 @@ namespace EPW_Recaster
             // 
             this.clearListToolStripMenuItem.Name = "clearListToolStripMenuItem";
             this.clearListToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.clearListToolStripMenuItem.Text = "❌ Clear";
+            this.clearListToolStripMenuItem.Text = "❌ Limpar";
             this.clearListToolStripMenuItem.Click += new System.EventHandler(this.clearListToolStripMenuItem_Click);
             // 
             // MainGui
@@ -671,6 +697,8 @@ namespace EPW_Recaster
         private System.Windows.Forms.NumericUpDown numSubSubAmount;
         internal MetroFramework.Controls.MetroLabel lblSubSubAmount;
         internal MetroFramework.Controls.MetroCheckBox chkbxAnyAmount;
+        private MetroFramework.Controls.MetroButton btnParamsCfg;
+        private MetroFramework.Controls.MetroButton btnStatsCfg;
         private System.Windows.Forms.ComboBox cbSubSubSubTerms;
         private System.Windows.Forms.NumericUpDown numSubSubSubAmount;
         internal MetroFramework.Controls.MetroLabel lblSubSubSubAmount;

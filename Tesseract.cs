@@ -31,7 +31,7 @@ namespace Tesseract
             @"\" + VersionPath.Split('\\')[0].Trim() + // f.e. \Tesseract
             @"\(TempCache)";
 
-        public static string Language { get; set; } = "eng";
+        public static string Language { get; set; } = "por";
 
         // Reference:
         // https://tesseract-ocr.github.io/tessdoc/ImproveQuality.html#page-segmentation-method

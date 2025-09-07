@@ -195,8 +195,8 @@ namespace EPW_Recaster
                 "# =================================================================",
                 "# OCR language for Tesseract",
                 "# Supported options:",
-                "#   eng - English (default)",
-                "#   por - Portuguese (Brazil)",
+                "#   por - Portuguese (Brazil) (default)",
+                "#   eng - English (US)",
                 "# =================================================================",
                 $"Language | {language}"
             };
@@ -211,7 +211,7 @@ namespace EPW_Recaster
             Tesseract.Ocr.Language = newLang;
             EnsureTrainedData(newLang);
             SaveLanguageToCfg(newLang);
-            btnSwitchLanguage.Text = newLang.ToUpper();
+            btnSwitchLanguage.Text = newLang == "eng" ? "ENUS" : "PTBR";
         }
 
         private void EnsureTrainedData(string language)
@@ -407,9 +407,9 @@ namespace EPW_Recaster
                             if (blueStats.Count() >= 4)
                             {
                                 if (currEquipment.IsWeapon)
-                                    AddMsg(new RtMessage("[ Detected Blue Weapon Stats ]", bold: true));
+                                    AddMsg(new RtMessage("[ Estatísticas Azuis de Arma Detectadas ]", bold: true));
                                 else
-                                    AddMsg(new RtMessage("[ Detected Blue Gear Stats ]", bold: true));
+                                    AddMsg(new RtMessage("[ Estatísticas Azuis de Equipamento Detectadas ]", bold: true));
 
                                 foreach (Stat blueStat in blueStats)
                                 {
@@ -422,20 +422,20 @@ namespace EPW_Recaster
                                         if (blueStat.Identifier.Contains("Purify"))
                                         {
                                             DialogResult userChoice = MessageBox.Show(
-                                                "A 'Purify' stat was detected.\r\n" +
+                                                "Uma estatística 'Purify' foi detectada.\r\n" +
                                                 "\r\n" +
-                                                "Without any actual game file alterations (configs.pck),\r\n" +
-                                                "this will result in incorrect judging and handling of conditions " +
-                                                "whenever this stat is rolled, since the in-game window needs scrolling " +
-                                                "for all stats to be readable (falling out of scope for " + Application.ProductName + ").\r\n" +
+                                                "Sem qualquer alteração nos arquivos do jogo (configs.pck),\r\n" +
+                                                "isso resultará em avaliação e tratamento incorretos das condições " +
+                                                "sempre que essa estatística for rolada, pois a janela do jogo precisa ser rolada " +
+                                                "para que todas as estatísticas sejam legíveis (fora do escopo para " + Application.ProductName + ").\r\n" +
                                                 "\r\n" +
                                                 "======\r\n" +
-                                                "In short :\r\n" +
+                                                "Em resumo:\r\n" +
                                                 "======\r\n" +
-                                                "If long descriptive stat(s) aren't patched,\r\nsome rolls could miss out on accepting a possibly valid roll.\r\n" +
+                                                "Se estatísticas de descrição longa não forem corrigidas,\r\nalgumas rolagens podem deixar de aceitar uma rolagem possivelmente válida.\r\n" +
                                                 "\r\n" +
-                                                "Continue rolling ?",
-                                                "[ IMPORTANT WARNING ]",
+                                                "Continuar rolando?",
+                                                "[ AVISO IMPORTANTE ]",
                                                 MessageBoxButtons.OKCancel,
                                                 MessageBoxIcon.Warning
                                                 );
@@ -459,9 +459,9 @@ namespace EPW_Recaster
                             }
                             else
                             {
-                                AddMsg(new RtMessage("[ Equipment Not Identifiable ]", color: RedLightColor, bold: true));
+                                AddMsg(new RtMessage("[ Equipamento Não Identificável ]", color: RedLightColor, bold: true));
                                 AddMsg(
-                                    "  => This roll will not be judged/handled."
+                                    "  => Esta rolagem não será avaliada/tratada."
                                     );
                             }
                         }
@@ -473,13 +473,13 @@ namespace EPW_Recaster
                     }
                     else
                     {
-                        AddMsg("No valid roll information detected (yet).");
+                        AddMsg("Nenhuma informação de rolagem válida detectada (ainda).");
                     }
                 }
                 else
                 {
                     //AddMsg("No text found in region.");
-                    AddMsg("No valid roll information detected (yet).");
+                    AddMsg("Nenhuma informação de rolagem válida detectada (ainda).");
                 }
 
                 #endregion Validate roll.
@@ -496,18 +496,18 @@ namespace EPW_Recaster
                 {
                     AddMsg(); // Clear info box first.
 
-                    AddMsg(new RtMessage("The roll process has been halted.", bold: true));
-                    AddMsg("( It doesn't seem necessary to roll any further. )" + Environment.NewLine);
-                    AddMsg("Either:" + Environment.NewLine +
-                        "- the in-game number of Perfect Elements" + Environment.NewLine +
-                        "  has been depleted" + Environment.NewLine +
-                        "- the conditions have already been" + Environment.NewLine +
-                        "  met and accepted" + Environment.NewLine +
-                        "- the game client disconnected" + Environment.NewLine +
-                        "- the tool wasn't able to read rolled stats correctly" + Environment.NewLine +
-                        "  > check capture region boundaries" + Environment.NewLine +
-                        "  > check if tool is overlapping" + Environment.NewLine +
-                        "    the game client");
+                    AddMsg(new RtMessage("O processo de rolagem foi interrompido.", bold: true));
+                    AddMsg("( Não parece necessário rolar mais. )" + Environment.NewLine);
+                    AddMsg("Ou:" + Environment.NewLine +
+                        "- o número de Perfect Elements no jogo" + Environment.NewLine +
+                        "  foi esgotado" + Environment.NewLine +
+                        "- as condições já foram" + Environment.NewLine +
+                        "  atendidas e aceitas" + Environment.NewLine +
+                        "- o cliente do jogo desconectou" + Environment.NewLine +
+                        "- a ferramenta não conseguiu ler corretamente as estatísticas roladas" + Environment.NewLine +
+                        "  > verifique os limites da região de captura" + Environment.NewLine +
+                        "  > verifique se a ferramenta está sobrepondo" + Environment.NewLine +
+                        "    o cliente do jogo");
                     AddMsg("=========================");
 
                     string doneSound = Tesseract.Ocr.AssemblyCodeBaseDirectory + @"\Media\Sounds\Done.wav";
@@ -532,7 +532,7 @@ namespace EPW_Recaster
                     for (int i = 0; i < conditionListEntries.Count(); i++)
                     {
                         //AddMsg("=========================");
-                        AddMsg(new RtMessage("[ Checking Condition List Entry " + (i + 1) + " ]", bold: true));
+                        AddMsg(new RtMessage("[ Verificando Entrada da Lista de Condições " + (i + 1) + " ]", bold: true));
 
                         conditionMet = true;
 
@@ -630,7 +630,7 @@ namespace EPW_Recaster
                                 {
                                     AddMsg(new RtMessage(
                                         message:
-                                        "❌ Non allowed combo stat detected:",
+                                        "❌ Estatística de combo não permitida detectada:",
                                         color:
                                         OrangeLightColor,
                                         indent: 3
@@ -665,7 +665,7 @@ namespace EPW_Recaster
                     {
                         AddMsg(new RtMessage(
                             message:
-                            "• " + (conditionMet ? "Condition met." : "No condition met."),
+                            "• " + (conditionMet ? "Condição atendida." : "Nenhuma condição atendida."),
                             color:
                             conditionMet ? GreenLightColor : OrangeLightColor
                             ));
@@ -674,7 +674,7 @@ namespace EPW_Recaster
                     {
                         AddMsg(new RtMessage(
                             message:
-                            "• " + (conditionMet ? "Condition met." : "Condition hasn't been met."),
+                            "• " + (conditionMet ? "Condição atendida." : "Condição não foi atendida."),
                             color:
                             conditionMet ? GreenLightColor : OrangeLightColor
                             ));
@@ -683,11 +683,11 @@ namespace EPW_Recaster
                     {
                         if (conditionMet)
                         {
-                            AddMsg(new RtMessage("=> Accepting new attributes.", color: GreenLightColor, indent: 3));
+                            AddMsg(new RtMessage("=> Aceitando novos atributos.", color: GreenLightColor, indent: 3));
                         }
                         else
                         {
-                            AddMsg(new RtMessage("=> Retaining old attributes.", indent: 3));
+                            AddMsg(new RtMessage("=> Mantendo atributos antigos.", indent: 3));
                         }
                     }
 
@@ -696,7 +696,7 @@ namespace EPW_Recaster
 
                 if (!InfoGui.PreviewCapture)
                 {
-                    AddMsg("• Number of rolls: " + nrRolls.ToString() + " / " + maxNrRolls.ToString() + ".");
+                    AddMsg("• Número de rolagens: " + nrRolls.ToString() + " / " + maxNrRolls.ToString() + ".");
                 }
 
                 #endregion Judge conditions.
@@ -707,10 +707,10 @@ namespace EPW_Recaster
                 // OVERWRITE TESSERACT RESULT FILE.
                 InfoGui.rTxtBoxInfo.Invoke((MethodInvoker)(() =>
                     File.WriteAllText(outputPath + ".txt",
-                        "[ Raw OCR ]" + Environment.NewLine +
+                        "[ OCR Bruto ]" + Environment.NewLine +
                         rawCapturedText + Environment.NewLine +
                         "=========================" + Environment.NewLine +
-                        "[ Custom Optimized OCR ]" + Environment.NewLine +
+                        "[ OCR Otimizado Personalizado ]" + Environment.NewLine +
                         currEquipment.OcrText.TrimEnd() + Environment.NewLine +
                         "=========================" + Environment.NewLine +
                         InfoGui.rTxtBoxInfo.Text,
@@ -757,7 +757,7 @@ namespace EPW_Recaster
                         // Reproduce?
                         if (nrRolls == maxNrRolls) // Check if not at allowed rolls.
                         {
-                            AddMsg(Environment.NewLine + Environment.NewLine + "Max number of rolls reached. Halted.");
+                            AddMsg(Environment.NewLine + Environment.NewLine + "Número máximo de rolagens alcançado. Parado.");
 
                             string doneSound = Tesseract.Ocr.AssemblyCodeBaseDirectory + @"\Media\Sounds\Done.wav";
                             if (File.Exists(doneSound)) // !InfoGui.PreviewCapture already checked above.
