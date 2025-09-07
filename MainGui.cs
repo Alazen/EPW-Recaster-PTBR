@@ -30,6 +30,9 @@ namespace EPW_Recaster
 
         private double CaptureRegionHeightClipping { get; set; } = 0.75;
 
+        private Control dragButton = null;
+        private Point dragOffset;
+
         #endregion Main Gui.
 
         #region Info Gui.
@@ -2448,6 +2451,35 @@ namespace EPW_Recaster
             btnReproduce.Location = new Point(
                 seeThroughRegion.Location.X + (int)positionReproduceX - (int)Math.Round(0.50 * btnReproduce.Width),
                 seeThroughRegion.Location.Y + (int)positionReproduceY - (int)Math.Round(0.50 * btnReproduce.Height));
+        }
+
+        private void MoveButton_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                dragButton = sender as Control;
+                dragOffset = e.Location;
+            }
+        }
+
+        private void MoveButton_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (dragButton != null)
+            {
+                int newX = dragButton.Left + e.X - dragOffset.X;
+                int newY = dragButton.Top + e.Y - dragOffset.Y;
+
+                Rectangle bounds = seeThroughRegion.Bounds;
+                newX = Math.Max(bounds.Left, Math.Min(newX, bounds.Right - dragButton.Width));
+                newY = Math.Max(bounds.Top, Math.Min(newY, bounds.Bottom - dragButton.Height));
+
+                dragButton.Location = new Point(newX, newY);
+            }
+        }
+
+        private void MoveButton_MouseUp(object sender, MouseEventArgs e)
+        {
+            dragButton = null;
         }
 
         #region Drag and drop rows reorder related.
