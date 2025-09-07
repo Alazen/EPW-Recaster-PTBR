@@ -319,7 +319,7 @@ namespace EPW_Recaster
             if (chkbxPreviewCapture.Checked)
             {
                 PreviewCapture = true;
-                chkbxPreviewCapture.Text = "Pré-visualizar (sem rolagens | apenas OCR)";
+                chkbxPreviewCapture.Text = "Pré-visualizar\n(sem rolagens | apenas OCR)";
 
                 // Don't show number of rolls in preview mode.
                 lblMaxRolls.Visible = false;
