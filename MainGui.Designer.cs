@@ -189,33 +189,30 @@ namespace EPW_Recaster
             // 
             // btnRetain
             // 
-            this.btnRetain.Enabled = false;
             this.btnRetain.Location = new System.Drawing.Point(42, 253);
             this.btnRetain.Name = "btnRetain";
             this.btnRetain.Size = new System.Drawing.Size(10, 10);
             this.btnRetain.TabIndex = 17;
             this.btnRetain.UseSelectable = true;
-            // 
+            //
             // btnNew
-            // 
-            this.btnNew.Enabled = false;
+            //
             this.btnNew.Location = new System.Drawing.Point(246, 253);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(10, 10);
             this.btnNew.TabIndex = 18;
             this.btnNew.UseSelectable = true;
-            // 
+            //
             // btnReproduce
-            // 
-            this.btnReproduce.Enabled = false;
+            //
             this.btnReproduce.Location = new System.Drawing.Point(143, 266);
             this.btnReproduce.Name = "btnReproduce";
             this.btnReproduce.Size = new System.Drawing.Size(10, 10);
             this.btnReproduce.TabIndex = 19;
             this.btnReproduce.UseSelectable = true;
-            // 
+            //
             // lblCaptureRegion
-            // 
+            //
             this.lblCaptureRegion.AutoSize = true;
             this.lblCaptureRegion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.lblCaptureRegion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

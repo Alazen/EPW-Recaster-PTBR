@@ -30,6 +30,9 @@ namespace EPW_Recaster
 
         private double CaptureRegionHeightClipping { get; set; } = 0.75;
 
+        private Control _draggedButton = null;
+        private Point _dragOffset;
+
         #endregion Main Gui.
 
         #region Info Gui.
@@ -241,12 +244,23 @@ namespace EPW_Recaster
 
                 SetLanguageFromCfg();
                 btnSwitchLanguage.Text = Tesseract.Ocr.Language.ToUpper();
+
+                EnableButtonDrag(btnRetain);
+                EnableButtonDrag(btnNew);
+                EnableButtonDrag(btnReproduce);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("" + ex, "Exception caught");
                 this.Close();
             }
+        }
+
+        private void EnableButtonDrag(Control button)
+        {
+            button.MouseDown += MoveButton_MouseDown;
+            button.MouseMove += MoveButton_MouseMove;
+            button.MouseUp += MoveButton_MouseUp;
         }
 
         private void CheckAdminPrivileges()
@@ -2448,6 +2462,35 @@ namespace EPW_Recaster
             btnReproduce.Location = new Point(
                 seeThroughRegion.Location.X + (int)positionReproduceX - (int)Math.Round(0.50 * btnReproduce.Width),
                 seeThroughRegion.Location.Y + (int)positionReproduceY - (int)Math.Round(0.50 * btnReproduce.Height));
+        }
+
+        private void MoveButton_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                _draggedButton = sender as Control;
+                _dragOffset = e.Location;
+            }
+        }
+
+        private void MoveButton_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (_draggedButton != null)
+            {
+                int newX = _draggedButton.Left + e.X - _dragOffset.X;
+                int newY = _draggedButton.Top + e.Y - _dragOffset.Y;
+
+                Rectangle bounds = seeThroughRegion.ClientRectangle;
+                newX = Math.Max(bounds.Left, Math.Min(newX, bounds.Right - _draggedButton.Width));
+                newY = Math.Max(bounds.Top, Math.Min(newY, bounds.Bottom - _draggedButton.Height));
+
+                _draggedButton.Location = new Point(newX, newY);
+            }
+        }
+
+        private void MoveButton_MouseUp(object sender, MouseEventArgs e)
+        {
+            _draggedButton = null;
         }
 
         #region Drag and drop rows reorder related.
