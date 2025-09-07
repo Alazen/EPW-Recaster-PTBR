@@ -190,8 +190,7 @@ namespace EPW_Recaster
             this.captureRegion.TabStop = false;
             // 
             // btnRetain
-            // 
-            this.btnRetain.Enabled = false;
+            //
             this.btnRetain.Location = new System.Drawing.Point(42, 253);
             this.btnRetain.Name = "btnRetain";
             this.btnRetain.Size = new System.Drawing.Size(10, 10);
@@ -203,7 +202,6 @@ namespace EPW_Recaster
             //
             // btnNew
             //
-            this.btnNew.Enabled = false;
             this.btnNew.Location = new System.Drawing.Point(246, 253);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(10, 10);
@@ -215,7 +213,6 @@ namespace EPW_Recaster
             //
             // btnReproduce
             //
-            this.btnReproduce.Enabled = false;
             this.btnReproduce.Location = new System.Drawing.Point(143, 266);
             this.btnReproduce.Name = "btnReproduce";
             this.btnReproduce.Size = new System.Drawing.Size(10, 10);
