@@ -407,9 +407,9 @@ namespace EPW_Recaster
                             if (blueStats.Count() >= 4)
                             {
                                 if (currEquipment.IsWeapon)
-                                    AddMsg(new RtMessage("[ Estatísticas Azuis de Arma Detectadas ]", bold: true));
+                                    AddMsg(new RtMessage("[ Adds Detectados (azul) ]", bold: true));
                                 else
-                                    AddMsg(new RtMessage("[ Estatísticas Azuis de Equipamento Detectadas ]", bold: true));
+                                    AddMsg(new RtMessage("[ Adds Azuis de Equipamento Detectadas ]", bold: true));
 
                                 foreach (Stat blueStat in blueStats)
                                 {
@@ -427,12 +427,12 @@ namespace EPW_Recaster
                                                 "Sem qualquer alteração nos arquivos do jogo (configs.pck),\r\n" +
                                                 "isso resultará em avaliação e tratamento incorretos das condições " +
                                                 "sempre que essa estatística for rolada, pois a janela do jogo precisa ser rolada " +
-                                                "para que todas as estatísticas sejam legíveis (fora do escopo para " + Application.ProductName + ").\r\n" +
+                                                "para que todas as adds sejam legíveis (fora do escopo para " + Application.ProductName + ").\r\n" +
                                                 "\r\n" +
                                                 "======\r\n" +
                                                 "Em resumo:\r\n" +
                                                 "======\r\n" +
-                                                "Se estatísticas de descrição longa não forem corrigidas,\r\nalgumas rolagens podem deixar de aceitar uma rolagem possivelmente válida.\r\n" +
+                                                "Se adds de descrição longa não forem corrigidas,\r\nalgumas rolagens podem deixar de aceitar uma roleta possivelmente válida.\r\n" +
                                                 "\r\n" +
                                                 "Continuar rolando?",
                                                 "[ AVISO IMPORTANTE ]",
@@ -461,7 +461,7 @@ namespace EPW_Recaster
                             {
                                 AddMsg(new RtMessage("[ Equipamento Não Identificável ]", color: RedLightColor, bold: true));
                                 AddMsg(
-                                    "  => Esta rolagem não será avaliada/tratada."
+                                    "  => Esta roleta não será avaliada/tratada."
                                     );
                             }
                         }
@@ -473,13 +473,13 @@ namespace EPW_Recaster
                     }
                     else
                     {
-                        AddMsg("Nenhuma informação de rolagem válida detectada (ainda).");
+                        AddMsg("Nenhuma informação de roleta válida detectada (ainda).");
                     }
                 }
                 else
                 {
                     //AddMsg("No text found in region.");
-                    AddMsg("Nenhuma informação de rolagem válida detectada (ainda).");
+                    AddMsg("Nenhuma informação de roleta válida detectada (ainda).");
                 }
 
                 #endregion Validate roll.
@@ -496,7 +496,7 @@ namespace EPW_Recaster
                 {
                     AddMsg(); // Clear info box first.
 
-                    AddMsg(new RtMessage("O processo de rolagem foi interrompido.", bold: true));
+                    AddMsg(new RtMessage("O processo de roleta foi interrompido.", bold: true));
                     AddMsg("( Não parece necessário rolar mais. )" + Environment.NewLine);
                     AddMsg("Ou:" + Environment.NewLine +
                         "- o número de Perfect Elements no jogo" + Environment.NewLine +
@@ -504,7 +504,7 @@ namespace EPW_Recaster
                         "- as condições já foram" + Environment.NewLine +
                         "  atendidas e aceitas" + Environment.NewLine +
                         "- o cliente do jogo desconectou" + Environment.NewLine +
-                        "- a ferramenta não conseguiu ler corretamente as estatísticas roladas" + Environment.NewLine +
+                        "- a ferramenta não conseguiu ler corretamente as adds roladas" + Environment.NewLine +
                         "  > verifique os limites da região de captura" + Environment.NewLine +
                         "  > verifique se a ferramenta está sobrepondo" + Environment.NewLine +
                         "    o cliente do jogo");

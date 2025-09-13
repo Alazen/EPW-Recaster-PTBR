@@ -50,7 +50,7 @@ namespace EPW_Recaster
             toolTip.SetToolTip(btnLogFolder, "\r\nAbrir Pasta de Logs\r\n ");
             toolTip.SetToolTip(numMaxRolls, "\r\nℹ\r\nTambém para de rolar\r\nquando os\r\nPerfect Elements no jogo\r\nacabam.\r\n ");
             toolTip.SetToolTip(lblMaxRolls, "\r\nℹ\r\nTambém para de rolar\r\nquando os\r\nPerfect Elements no jogo\r\nacabam.\r\n ");
-            toolTip.SetToolTip(chkbxPreviewCapture, "\r\nℹ\r\nQuando marcado, apenas\r\nrealiza uma captura.\r\nNenhuma rolagem será\r\nfeita no jogo.\r\n ");
+            toolTip.SetToolTip(chkbxPreviewCapture, "\r\nℹ\r\nQuando marcado, apenas\r\nrealiza uma captura.\r\nNenhuma roleta será\r\nfeita no jogo.\r\n ");
         }
 
         #endregion Constructors | Initialization Methods.
