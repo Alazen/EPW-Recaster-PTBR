@@ -3,7 +3,9 @@
 ![Visão Geral](./GitHub%20Assets/EPW%20Recaster%20PT-BR%20-%20Release%20v3.1.3.jpg)
 
 ## Download
-**[ [ Versões Mais Recentes e Antigas ](https://github.com/KimDebroye/EPW-Recaster/releases) ]**
+**[ [ Versão Melhorada PT-BR ](https://github.com/KimDebroye/EPW-Recaster/releases) ]**
+
+**[ [ Versão Original EN-US ](https://github.com/KimDebroye/EPW-Recaster/releases) ]**
 
 ___
 
@@ -21,9 +23,9 @@ ___
 
 ## Versão Resumida 3.1 Início Rápido
 
-| **Demonstração em Vídeo** | **Links Úteis do Leia-me** |
+| **Demonstração em Vídeo** | **Links Úteis do README** |
 | :--- | :--- |
-| [![EPW Recaster ~ Vídeo de Demonstração](https://i.snipboard.io/iB6j5q.jpg)](https://youtu.be/i75cPTjQQ6Q) | 🔽 [Configuração e Pré-requisitos](#setup)<br />🔽 [Formulário de Configuração Principal](#1--main--setup-form)<br />🔽 [Exemplos Comparativos de Condições](#1-4-3-comparative-condition-list-examples)<br />🔽 [FAQ](#faq)<br />🔽 [Contato \| Feedback](#contact--feedback) |
+| [![EPW Recaster ~ Vídeo de Demonstração](https://i.snipboard.io/iB6j5q.jpg)](https://youtu.be/i75cPTjQQ6Q) | 🔽 [Configuração e Pré-requisitos](#setup)<br />🔽 [Formulário de Configuração Principal](#1--main--setup-form)<br />🔽 [Exemplos Comparativos de Condições](#1-4-3-comparative-condition-list-examples)<br />🔽 [FAQ](#faq) |
 
 ___
 
@@ -389,6 +391,7 @@ ___
 ## Notas Técnicas e Referências
 
 - Esta ferramenta foi programada no Visual Studio 2019 Community Edition usando a linguagem C#.
+- O código foi revisado utilizando ferramentas LLMs.
 - Bibliotecas de terceiros utilizadas:
   - [Tesseract](https://github.com/UB-Mannheim/tesseract) (*OCR*)
   - [MetroFramework](https://github.com/thielj/MetroFramework) (*framework de UI*)
@@ -398,8 +401,5 @@ ___
 ___
 
 ## Contato | Feedback
-
-- Poste uma mensagem no [ Tópico de Informações de Lançamento da Ferramenta EPW ](https://epicpw.com/index.php?topic=68651.0).
-- Sinta-se à vontade para me enviar uma mensagem no jogo | no Discord.
 
 > *(Qualquer tipo de) Feedback é sempre bem-vindo e muito apreciado.*
