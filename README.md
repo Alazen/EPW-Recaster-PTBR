@@ -1,425 +1,405 @@
-﻿# EPW Recaster
+# EPW Recaster
 
-![Overview](https://i.snipboard.io/i0SQku.jpg)
+![Visão Geral](https://i.snipboard.io/i0SQku.jpg)
 
 ## Download
-**[ [ Latest & Older Versions ](https://github.com/KimDebroye/EPW-Recaster/releases) ]**
+**[ [ Versões Mais Recentes e Antigas ](https://github.com/KimDebroye/EPW-Recaster/releases) ]**
 
 ___
 
-## In a nutshell
-EPW Recaster is a tool that
-- automates recasting EPW weapons & gears (_armors_)
-- using Optical Character Recognition and
-- user-configurable search conditions.
-> *EPW Recaster does not rely on nor uses any kind of game hook.<br />It solely relies on what is captured using OCR and performs<br />programmatical choices & actions based on captured results.*
+## Em resumo
+O EPW Recaster é uma ferramenta que
+- automatiza a reforja de armas e equipamentos (armaduras) do EPW
+- usando Reconhecimento Óptico de Caracteres (OCR) e
+- condições de busca configuráveis pelo usuário.
+> *O EPW Recaster não depende nem utiliza nenhum tipo de injeção no jogo (hook).<br />Ele se baseia unicamente no que é capturado usando OCR e realiza<br />escolhas e ações programáticas com base nos resultados capturados.*
 
-> **Compatibility Note**
-> - This tool has been confirmed to work on other servers as well (*Relentless, ...*).
+> **Nota de Compatibilidade**
+> - Foi confirmado que esta ferramenta também funciona em outros servidores (*Relentless, ...*).
 
 ___
 
-## TL;DR Version 3.1 QuickStart
+## Versão Resumida 3.1 Início Rápido
 
-| **Video Demonstration** | Useful ReadMe Links |
+| **Demonstração em Vídeo** | **Links Úteis do Leia-me** |
 | :--- | :--- |
-| [![EPW Recaster ~ Demonstration Video](https://i.snipboard.io/iB6j5q.jpg)](https://youtu.be/i75cPTjQQ6Q) | 🔽 [Setup & Prerequisites](#setup)<br />🔽 [Main Setup Form](#1--main--setup-form)<br />🔽 [Comparative Condition Examples](#1-4-3-comparative-condition-list-examples)<br />🔽 [FAQ](#faq)<br />🔽 [Contact \| Feedback](#contact--feedback) |
+| [![EPW Recaster ~ Vídeo de Demonstração](https://i.snipboard.io/iB6j5q.jpg)](https://youtu.be/i75cPTjQQ6Q) | 🔽 [Configuração e Pré-requisitos](#setup)<br />🔽 [Formulário de Configuração Principal](#1--main--setup-form)<br />🔽 [Exemplos Comparativos de Condições](#1-4-3-comparative-condition-list-examples)<br />🔽 [FAQ](#faq)<br />🔽 [Contato \| Feedback](#contact--feedback) |
 
 ___
 
-## Setup
+## Configuração
 
-- Extract the contents of the provided package<br />to any folder that has write privileges.<br />( *f.e.* `Desktop` | `C:\Apps\EPW Recaster` | ... )
-- Launch `EPW Recaster(.exe)`.
- - Click the language button on the main form to toggle between English and Portuguese OCR (or edit `Config/Language.cfg` manually). Missing Tesseract language data such as `por.traineddata` is downloaded automatically.
+- Extraia o conteúdo do pacote fornecido<br />para qualquer pasta que tenha privilégios de escrita.<br />( *ex.:* `Área de Trabalho` | `C:\Apps\EPW Recaster` | ... )
+- Inicie `EPW Recaster(.exe)`.
+ - Clique no botão de idioma no formulário principal para alternar entre o OCR em Inglês e Português (ou edite `Config/Language.cfg` manualmente). Dados de idioma ausentes do Tesseract, como `por.traineddata`, são baixados automaticamente.
 
-### ❗ Additional Setup Prerequisites ❗
+### ❗ Pré-requisitos de Configuração Adicionais ❗
 
-**<details><summary>` [ (Show|Hide) Additional Setup Prerequisites ] `</summary>**
+**<details><summary>` [ (Mostrar|Ocultar) Pré-requisitos de Configuração Adicionais ] `</summary>**
 
-- **This tool may require administrative privileges due to low-level actions used**<br />( *f.i. moving/clicking mouse*, ... ).
-  - **Steps to check/enable administrative privileges** :
-    - Right-click `EPW Recaster(.exe)` and<br />choose `Properties`.
-    - In `Compatibility` tab,<br />check `☑ Run this program as an administrator`<br />and confirm by clicking `OK`.
-- **This tool requires Windows Display Scaling to be set to `100%`<br />for a correct screen capture behavior**.
-  - **Steps to check/change Windows Display Scaling**<br />( *Windows 10 / Other Windows versions: use Google* ) :
-    - Right-click anywhere on desktop and<br />choose `Display Settings`.
-    - Make sure the Scale and layout setting is set to `100%` and<br />close the window.<br />
-      ![Windows 10 Display Scaling](https://i.snipboard.io/aMzD0F.jpg)
+- **Esta ferramenta pode exigir privilégios administrativos devido às ações de baixo nível utilizadas**<br />( *ex.: mover/clicar o mouse*, ... ).
+  - **Passos para verificar/habilitar privilégios administrativos** :
+    - Clique com o botão direito em `EPW Recaster(.exe)` e<br />escolha `Propriedades`.
+    - Na aba `Compatibilidade`,<br />marque `☑ Executar este programa como administrador`<br />e confirme clicando em `OK`.
+- **Esta ferramenta requer que a Escala de Exibição do Windows seja definida como `100%`<br />para um comportamento correto de captura de tela**.
+  - **Passos para verificar/alterar a Escala de Exibição do Windows**<br />( *Windows 10 / Outras versões: use o Google* ) :
+    - Clique com o botão direito em qualquer lugar na área de trabalho e<br />escolha `Configurações de Exibição`.
+    - Certifique-se de que a opção Escala e layout esteja definida como `100%` e<br />feche a janela.<br />
+      ![Escala de Exibição do Windows 10](https://i.snipboard.io/aMzD0F.jpg)
 
 </details>
 
 ___
 
-## Sections
+## Seções
 
-![Sections](https://i.snipboard.io/NvjpMd.jpg)
+![Seções](https://i.snipboard.io/NvjpMd.jpg)
 
-### General Notes
-> - Once a preview or an auto-roll is started, the main form will be programmatically minimized and restored after.<br />( *The main form is mainly used for setup purposes only.* )
-> - On the other hand, the info form will always stay on top of all windows.
-> - All changes are automatically stored and restored upon relaunch.
-> - Using any kind of text editor, theming options can be altered in<br />`.\Config\ThemeColorStyle.cfg` (*includes additional comments*).
-
-___
-
-### 1. ( Main ) Setup Form
+### Notas Gerais
+> - Uma vez que uma pré-visualização ou uma reforja automática é iniciada, o formulário principal será minimizado e restaurado programaticamente depois.<br />( *O formulário principal é usado principalmente apenas para fins de configuração.* )
+> - Por outro lado, o formulário de informações sempre permanecerá sobre todas as janelas.
+> - Todas as alterações são salvas e restauradas automaticamente ao reiniciar.
+> - Usando qualquer tipo de editor de texto, as opções de tema podem ser alteradas em<br />`.\Config\ThemeColorStyle.cfg` (*inclui comentários adicionais*).
 
 ___
 
-#### 1-1. See-through Region
-
-![See-through Region](https://snipboard.io/KETSjh.jpg)
-
-- When launching EPW Recaster for the first time<br />( *and/or whenever the in-game location of the recast<br />a.k.a. reshape/manufacture window is changed* ),
-- **move the tool around and resize using the size grip handle**<br />in order for:
-  - the see-through region to fit the in-game recast<br />a.k.a. reshape/manufacture window,
-  - the 3 tiny squares ( *hinting click regions* )<br />to be located somewhere over the in-game buttons<br />( `Retain the old attribute` |`Reproduce` | `Use the new attribute` ),
-  - the capture region to fit the text to be captured.
-    - **The fitting does not need to be pixel perfect in order for the Optical Character Recognition to work properly.**
-    - Also, **try to avoid including any additional UI elements in the captured region**.<br />Reason: Depending on the fitting, parts of the in-game UI could be detected as a character<br />( *f.e. the in-game scroll up icon may be detected as capital 'A'* ).
+### 1. ( Principal ) Formulário de Configuração
 
 ___
 
-#### 1-2. Capture Region
+#### 1-1. Região Transparente
 
-![Capture Region](https://snipboard.io/gimUN4.jpg)
+![Região Transparente](https://snipboard.io/KETSjh.jpg)
 
-- ( *A visible preview of* )
-- The region setting the boundaries used for Optical Character Recognition.
-- Depending in which mode the process will be started, the capture region will either be located:
-  - **Preview Mode : full width of see-through region** and a little above the in-game buttons.
-  - **Roll Mode : right half of see-through region** and a little above the in-game buttons.
-
-> **❗ IMPORTANT NOTE ❗**
-> - **[ ! ] Without any actual game file alterations ( *`configs.pck`* ),<br />it is not recommended to use EPW Recaster<br />to look for stats on weapons that have unique (*long descriptive*) stats**,<br />unless it's (*one of those*) unique stats being targeted in a roll.
-> - *In other words*, avoid looking for stats on weapons having<br />`Purify Spell`, `God of Frenzy`, `Square Formation`, `Soul Shatter`, `Spirit Blackhole`, ...<br />as a possible stat in order not to miss a stat needing an in-game scroll<br />(*unless the previously mentioned stats are being specifically targeted*).
+- Ao iniciar o EPW Recaster pela primeira vez<br />( *e/ou sempre que a localização no jogo da janela de reforja<br />também conhecida como remodelar/fabricação for alterada* ),
+- **mova a ferramenta e redimensione usando a alça de redimensionamento**<br />para que:
+  - a região transparente se ajuste à janela de reforja do jogo<br />também conhecida como remodelar/fabricação,
+  - os 3 pequenos quadrados (*indicando as regiões de clique*)<br />estejam localizados sobre os botões do jogo<br />( `Manter o atributo antigo` | `Reforjar` | `Usar o novo atributo` ),
+  - a região de captura se ajuste ao texto a ser capturado.
+    - **O ajuste não precisa ser perfeito ao nível do pixel para que o Reconhecimento Óptico de Caracteres funcione corretamente.**
+    - Além disso, **tente evitar incluir quaisquer elementos adicionais da interface do usuário na região capturada**.<br />Motivo: Dependendo do ajuste, partes da interface do jogo podem ser detectadas como um caractere<br />( *ex.: o ícone de rolagem para cima do jogo pode ser detectado como a letra 'A' maiúscula* ).
 
 ___
 
-#### 1-3. Condition List Switcher
+#### 1-2. Região de Captura
 
-![Condition List Switcher](https://i.snipboard.io/jYq52c.jpg)
+![Região de Captura](https://snipboard.io/gimUN4.jpg)
 
-- **Left Mouse Click**:
-  - Select any of 5 condition list slots to work with.
-- **Right Mouse Click**:
-  - **Copy / Export Condition List**.
-    - Can be used to:
-      - share a condition list with anyone,
-      - move a condition list to another slot by importing it.
-      - back up a condition list ( *f.e. in a text document* ).
-  - **Paste / Import Condition List**.
-    - Can be used to:
-      - import a condition list,
-      - overwrite an existing condition list with another one.
-  - **Clear Condition List**.
-    - Clears all entries of a condition list.
+- ( *Uma pré-visualização visível da* )
+- A região que define os limites usados para o Reconhecimento Óptico de Caracteres.
+- Dependendo do modo em que o processo será iniciado, a região de captura estará localizada:
+  - **Modo de Pré-visualização** : largura total da região transparente e um pouco acima dos botões do jogo.
+  - **Modo de Reforja** : metade direita da região transparente e um pouco acima dos botões do jogo.
+
+> **❗ NOTA IMPORTANTE ❗**
+> - **[ ! ] Sem nenhuma alteração real nos arquivos do jogo (*`configs.pck`* ),<br />não é recomendado usar o EPW Recaster<br />para procurar atributos em armas que possuem atributos únicos (*com descrição longa*)**,<br />a menos que seja um desses atributos únicos o alvo da reforja.
+> - *Em outras palavras*, evite procurar por atributos em armas que possuam<br />`Purify Spell`, `God of Frenzy`, `Square Formation`, `Soul Shatter`, `Spirit Blackhole`, ...<br />como um atributo possível para não perder um atributo que precise de rolagem na janela do jogo<br />(*a menos que os atributos mencionados anteriormente sejam os alvos específicos*).
 
 ___
 
-#### 1-4. Condition List
+#### 1-3. Alternador de Lista de Condições
 
-![Condition List](https://i.snipboard.io/uOwQhv.jpg)
+![Alternador de Lista de Condições](https://i.snipboard.io/jYq52c.jpg)
 
-- A list containing preferred roll conditions.
-- **Used in order to programmatically stop rolling when one of the listed required conditions is met**.
-- The condition list can have both _fixed amount stats_ and _combo stats_ entries mixed.
-- The order of entries can be changed by dragging an entry over to another location in the condition list.
+- **Clique com o Botão Esquerdo do Mouse**:
+  - Selecione um dos 5 slots de lista de condições para trabalhar.
+- **Clique com o Botão Direito do Mouse**:
+  - **Copiar / Exportar Lista de Condições**.
+    - Pode ser usado para:
+      - compartilhar uma lista de condições com qualquer pessoa,
+      - mover uma lista de condições para outro slot importando-a.
+      - fazer backup de uma lista de condições (*ex.: em um documento de texto*).
+  - **Colar / Importar Lista de Condições**.
+    - Pode ser usado para:
+      - importar uma lista de condições,
+      - sobrescrever uma lista de condições existente com outra.
+  - **Limpar Lista de Condições**.
+      - Limpa todas as entradas de uma lista de condições.
 
 ___
 
-#### 1-4-1. Fixed Amount Stat(s)
+#### 1-4. Lista de Condições
 
-![Fixed Amount Stat](https://i.snipboard.io/6YN19T.jpg)
-![Fixed Amount Stats](https://i.snipboard.io/fOHrqN.jpg)
+![Lista de Condições](https://i.snipboard.io/30e8dN.jpg)
 
-- > **Although `REQUIRING A FIXED AMOUNT` of a preferred single or grouped stat,<br />rolled results `CAN HAVE ANY OTHER STAT`**.
-- **Will accept a roll if**
-  - an exact amount or more of a preferred single stat or of each of the grouped stats is detected.
-- **Will reject a roll if**
-  - an exact amount or more of a preferred single stat or of each of the grouped stats isn't detected.
-- Recognizable by a blue stat color.
-- Always preceded by a fixed minimum amount of a preferred stat.
-- Can have up to 4 ( _grouped_ ) stat requirements per entry.
-- Mainly used for rolls:
-  - having equal stats:
-    - _`4 x Interval Between Hits`_
-  - needing at least a certain amount of stats:
-    - _at least `2 x Channelling` ( and/or `any other stat rolled`_ )
+Uma lista contendo as condições de reforja preferidas.
+Usada para parar a reforja programaticamente quando uma das condições necessárias listadas for atendida.
+A lista de condições pode ter entradas mistas de atributos de quantidade fixa e combos de atributos.
+A ordem das entradas pode ser alterada arrastando uma entrada para outro local na lista de condições.
+
+##### 1-4-1. Atributo(s) de Quantidade Fixa
+
+![Atributo de Quantidade Fixa | Atributos de Quantidade Fixa](https://snipboard.io/cV2Tuo.jpg)
+
+Embora **EXIJA UMA QUANTIDADE FIXA** de um atributo preferido, único ou agrupado,
+os resultados da reforja **PODEM TER QUALQUER OUTRO ATRIBUTO**.
+
+- **Aceitará uma reforja se**
+  uma quantidade exata ou maior de um atributo único preferido ou de cada um dos atributos agrupados for detectada.
+- **Rejeitará uma reforja se**
+  uma quantidade exata ou maior de um atributo único preferido ou de cada um dos atributos agrupados não for detectada.
+- Reconhecível pela cor de atributo azul.
+- Sempre precedido por uma quantidade mínima fixa de um atributo preferido.
+- Pode ter até 4 requisitos de atributos (agrupados) por entrada.
+- Usado principalmente para reforjas:
+    - que possuem atributos iguais:
+        - 4 x Intervalo Entre Ataques
+    - que precisam de pelo menos uma certa quantidade de atributos:
+        - pelo menos 2 x Canalização ( e/ou qualquer outro atributo obtido )
     - ...
 
-___
+##### 1-4-2. Combo de Atributos
 
-#### 1-4-2. Combo Stats
+![Combo de Atributos](https://snipboard.io/mJXKZQ.jpg)
 
-![Combo Stats](https://i.snipboard.io/2W7pMU.jpg)
+Embora **NÃO EXIJA UMA QUANTIDADE FIXA** de um atributo preferido, único ou agrupado,
+os resultados da reforja **NÃO PODEM TER NENHUM OUTRO ATRIBUTO**.
 
-- > **Although `NOT REQUIRING A FIXED AMOUNT` of a preferred single or grouped stat,<br />rolled results `CAN NOT HAVE ANY OTHER STAT`**.
-- **Will accept a roll if**
-  - a combination of at least one of each of the preferred grouped stats only is detected.
-- **Will reject a roll if**
-  - a combination of at least one of each of the preferred grouped stats isn't detected _or_
-  - a stat is detected that isn't listed in the preferred grouped stats.
-- Recognizable by a golden stat color.
-- Are **not** preceded by a fixed minimum amount of a preferred stat.
-- Can have up to 4 ( _grouped_ ) stat requirements per entry.
-- Mainly used for rolls:
-  - needing a uncertain amount of certain specific stats only:
-    - _at least `1 x Channelling` & at least `1 x Reduce Physical Damage Taken` ( and NOT `any other stat rolled`_ )
+- **Aceitará uma reforja se**
+  uma combinação de pelo menos um de cada dos atributos agrupados preferidos for detectada (e somente eles).
+- **Rejeitará uma reforja se**
+    - uma combinação de pelo menos um de cada dos atributos agrupados preferidos não for detectada ou
+    - um atributo que não está listado nos atributos agrupados preferidos for detectado.
+- Reconhecível pela cor de atributo dourada.
+- Não são precedidos por uma quantidade mínima fixa de um atributo preferido.
+- Pode ter até 4 requisitos de atributos (agrupados) por entrada.
+- Usado principalmente para reforjas:
+    - que precisam de uma quantidade incerta de certos atributos específicos apenas:
+        - pelo menos 1 x Canalização e pelo menos 1 x Redução de Dano Físico Recebido ( e NENHUM outro atributo obtido )
     - ...
 
-___
+##### 1-4-3. Exemplos Comparativos da Lista de Condições
 
-#### 1-4-3. Comparative Condition List Examples
-
-| Condition | Would Accept | Would Reject |
+| **Condição** | **Aceitaria** | **Rejeitaria** |
 | :--- | :--- | :--- |
-| ![Fixed Amount Stat](https://i.snipboard.io/6YN19T.jpg) | ✅<br />*<sub><sup>• Channelling -3%<br/>• Channelling -2%<br/>• Channelling -3%<br />• Channelling -2%</sup></sub>*<hr />✅<br />*<sub><sup>• Channelling -3%<br />• Magic +9<br />• Channelling -2%<br />• Reduce Physical Damage Taken +2%</sup></sub>*<hr />✅<br />*<sub><sup>• Channelling -3%<br/>• Channelling -2%<br/>• Channelling -3%<br />• Magic +9</sup></sub>* | ❌<br />*<sub><sup>• Channelling -3%<br />• Magic +9<br/>• Magic +10<br />• Reduce Physical Damage Taken +2%</sup></sub>*<hr />❌<br />*<sub><sup>• Reduce Physical Damage Taken +2%<br />• Reduce Physical Damage Taken +1%<br/>• Reduce Physical Damage Taken +2%<br />• Reduce Physical Damage Taken +2%</sup></sub>*<hr />❌<br />*<sub><sup>• Channelling -3%<br />• Reduce Physical Damage Taken +1%<br/>• Reduce Physical Damage Taken +2%<br />• Reduce Physical Damage Taken +2%</sup></sub>* |
-| | | |
-| ![Fixed Amount Stats](https://i.snipboard.io/fOHrqN.jpg) | ✅<br />*<sub><sup>• Reduce Physical Damage Taken +2%<br/>• Channelling -3%<br/>• Reduce Physical Damage Taken +1%<br />• Channelling -2%</sup></sub>* | ❌<br />*<sub><sup>• Channelling -3%<br />• Channelling -2%<br/>• Channelling -3%<br />• Channelling -1%</sup></sub>*<hr />❌<br />*<sub><sup>• Channelling -3%<br />• Channelling -1%<br/>• Channelling -3%<br />• Reduce Physical Damage Taken +2%</sup></sub>*<hr />❌<br />*<sub><sup>• Channelling -3%<br />• Magic +9<br/>• Magic +10<br />• Reduce Physical Damage Taken +2%</sup></sub>* |
-| | | |
-| ![Combo Stats](https://i.snipboard.io/2W7pMU.jpg) | ✅<br />*<sub><sup>• Channelling -3%<br />• Reduce Physical Damage Taken +1%<br />• Channelling -2%<br />• Reduce Physical Damage Taken +2%</sup></sub>*<hr />✅<br />*<sub><sup>• Channelling -3%<br />• Channelling -2%<br />• Channelling -2%<br />• Reduce Physical Damage Taken +2%</sup></sub>*<hr />✅<br />*<sub><sup>• Reduce Physical Damage Taken +2%<br />• Reduce Physical Damage Taken +1%<br />• Reduce Physical Damage Taken +2%<br />• Channelling -3%</sup></sub>* | ❌<br />*<sub><sup>• Channelling -3%<br />• Channelling -2%<br/>• Channelling -3%<br />• Channelling -3%</sup></sub>*<hr />❌<br />*<sub><sup>• Channelling -3%<br />• Channelling -3%<br />• Magic +9<br/>• Channelling -2%</sup></sub>*<hr />❌<br />*<sub><sup>• Channelling -3%<br />• Channelling -3%<br />• Magic +9<br/>• Reduce Physical Damage Taken +2%</sup></sub>* |
+| **Atributo de Quantidade Fixa** | ✅<br>• Canalização -3%<br>• Canalização -2%<br>• Canalização -3%<br>• Canalização -2%<br><br>✅<br>• Canalização -3%<br>• Mágico +9<br>• Canalização -2%<br>• Redução de Dano Físico Recebido +2%<br><br>✅<br>• Canalização -3%<br>• Canalização -2%<br>• Canalização -3%<br>• Mágico +9 | ❌<br>• Canalização -3%<br>• Mágico +9<br>• Mágico +10<br>• Redução de Dano Físico Recebido +2%<br><br>❌<br>• Redução de Dano Físico Recebido +2%<br>• Redução de Dano Físico Recebido +1%<br>• Redução de Dano Físico Recebido +2%<br>• Redução de Dano Físico Recebido +2%<br><br>❌<br>• Canalização -3%<br>• Redução de Dano Físico Recebido +1%<br>• Redução de Dano Físico Recebido +2%<br>• Redução de Dano Físico Recebido +2% |
+| **Atributos de Quantidade Fixa** | ✅<br>• Redução de Dano Físico Recebido +2%<br>• Canalização -3%<br>• Redução de Dano Físico Recebido +1%<br>• Canalização -2% | ❌<br>• Canalização -3%<br>• Canalização -2%<br>• Canalização -3%<br>• Canalização -1%<br><br>❌<br>• Canalização -3%<br>• Canalização -1%<br>• Canalização -3%<br>• Redução de Dano Físico Recebido +2%<br><br>❌<br>• Canalização -3%<br>• Mágico +9<br>• Mágico +10<br>• Redução de Dano Físico Recebido +2% |
+| **Combo de Atributos** | ✅<br>• Canalização -3%<br>• Redução de Dano Físico Recebido +1%<br>• Canalização -2%<br>• Redução de Dano Físico Recebido +2%<br><br>✅<br>• Canalização -3%<br>• Canalização -2%<br>• Canalização -2%<br>• Redução de Dano Físico Recebido +2%<br><br>✅<br>• Redução de Dano Físico Recebido +2%<br>• Redução de Dano Físico Recebido +1%<br>• Redução de Dano Físico Recebido +2%<br>• Canalização -3% | ❌<br>• Canalização -3%<br>• Canalização -2%<br>• Canalização -3%<br>• Canalização -3%<br><br>❌<br>• Canalização -3%<br>• Canalização -3%<br>• Mágico +9<br>• Canalização -2%<br><br>❌<br>• Canalização -3%<br>• Canalização -3%<br>• Mágico +9<br>• Redução de Dano Físico Recebido +2% |
+
+##### 1-5. Entrada de Condição (Entradas)
+
+![Entrada de Condição](https://snipboard.io/uAz8kQ.jpg)
+
+❗ **NOTA IMPORTANTE** ❗
+Sempre pense bem sobre quais atributos reforjados seriam preferíveis e
+adicione condições abrangentes de acordo
+para não perder nenhuma boa reforja.
+
+Para listar uma condição de reforja:
+
+1.  Selecione uma quantidade preferida e um atributo preferido a ser encontrado.
+2.  (Opcional) Selecione até 3 quantidades e atributos preferidos adicionais para serem encontrados/combinados.
+3.  Assim que um segundo atributo preferido for selecionado na lista suspensa,
+    uma caixa de seleção para ignorar quantidades ficará disponível.
+      - Se marcada, a entrada se tornará uma entrada de combo (permitindo qualquer quantidade dos atributos selecionados, embora limitando a reforja a conter apenas os atributos selecionados).
+4.  Clique no sinal de **+** verde.
+
+Qualquer condição adicionada anteriormente pode ser removida
+pressionando o **x** vermelho na lista de condições.
+
+**Notas Adicionais**
+
+- Ignore os atributos brancos, apenas os atributos azuis devem ser levados em conta.
+  ( *ex.: 4 x Res. Fís. = máx., ignorando o quinto atributo branco de Res. Fís. em um equipamento* )
+- Ao adicionar (acidentalmente) uma quantidade maior que 1 de um atributo único ( *ex.: Purify Spell* ),
+  ele será listado como 1 x.
+- Ao adicionar (acidentalmente) uma quantidade somada que exceda o máximo de atributos possível,
+  ele será listado como 4 x ou 5 x (somente Atq. e Def.).
+- Usando qualquer tipo de editor de texto, a lista de opções de atributos selecionáveis pode ser alterada em
+  `.\Config\Stats.cfg` (*inclui comentários adicionais*).
 
 ___
 
-#### 1-5. Condition Entry (Entries)
+### 2. Formulário de Informações
 
-![Condition Entry](https://i.snipboard.io/BbaM3T.jpg)
+#### 2-1. Agrupador de Formulário
 
-> **❗ IMPORTANT NOTE ❗**<br />
-> **Always put some thought in which rolled stats would be preferred and<br />add all-encompassing conditions accordingly<br />in order not to miss out on any good rolls.**
+![Agrupador de Formulário](https://snipboard.io/Fc0akN.jpg)
 
-- In order to enlist a roll condition:
-  - Select a preferred amount and preferred stat to be found.
-    - (Optional) Select up to 3 additional preferred amounts and preferred stats to be found/combined.
-      - Once a second preferred stat has been selected from the drop-down list,<br />a checkbox to ignore amounts becomes available.<br />If checked, the entry would become a combo entry ( _allowing any amount of selected stats although limiting a roll to only contain the selected stats_ ).
-  - Click the green `+` sign.
-- Any previously added condition can be removed<br />by pressing the red `x` in the condition list.
+Um botão de alternância que anexa/desanexa o formulário de informações do formulário principal.
 
-> **Additional Notes**
->
->- **Ignore white stats, only blue stats are to be taken into account**.<br />
->  ( *f.e.* `4 x Phys. Res.` *= max, ignoring the fifth white Phys. Res. stat on a gear* ) 
->- When (*accidentally*) adding an amount larger than 1 of a unique stat ( *f.e. `Purify Spell`* ),<br />it will instead be enlisted as `1 x`.
->- When (*accidentally*) adding a summed amount exceeding the max stats possible,<br />it will instead be enlisted as either `4 x` or `5 x` ( _Atk. & Def. only_ ).
->- Using any kind of text editor, the list of selectable stat options can be altered in<br />`.\Config\Stats.cfg` (*includes additional comments*).
+- **Modo Agrupado** ( modo de formulários anexados | padrão na primeira inicialização ):
+    - Apenas o formulário principal será móvel e redimensionável.
+    - Apenas a localização e o tamanho do formulário principal serão salvos e restaurados ao reiniciar ( devido ao formulário de informações seguir suas alterações de localização e/ou tamanho ).
+- **Modo Desagrupado** ( modo de formulários desanexados )
+    - Tanto o formulário principal quanto o de informações serão móveis e redimensionáveis separadamente.
+    - As localizações e tamanhos de ambos os formulários serão salvos e restaurados ao reiniciar.
 
-___
+#### 2-2. Pasta de Logs
 
-### 2. Info Form
+![Pasta de Logs](https://snipboard.io/e24Ea5.jpg)
 
-___
+Clicar neste botão abre a pasta de logs.
+Para cada reforja, um arquivo de texto e imagem resultante é registrado.
+> [ ! ] Ocasionalmente, esvazie/exclua esta pasta<br />para liberar espaço de armazenamento.
 
-#### 2-1. Form (Un)Chainer
+#### 2-3. Informações do Resultado do OCR
 
-![Form (Un)Chainer](https://i.snipboard.io/ANlV8a.jpg)
+![Informações do Resultado do OCR](https://snipboard.io/z4EmxV.jpg)
 
-- **A toggle button attaching/detaching the info form to/from the main form.**
-	- **Chained Mode** ( *attached forms mode | default at first launch* ) :
-		- Only the main form will be movable and resizable.
-		- Only the main form location and size will be stored and restored upon relaunch ( *due to the info form following its changes in location and/or size* ).
-	- **Unchained Mode** ( *detached forms mode* )
-		- Both main and info form will be separately movable and resizable.
-		- Both form locations and sizes will be stored and restored upon relaunch.
+Exibe o texto capturado juntamente com algumas informações adicionais ao pré-visualizar ou reforjar.
 
-___
+#### 2-4. Modo de Pré-visualização | Reforja
 
-#### 2-2. Log Folder
+![Modo de Pré-visualização | Reforja](https://snipboard.io/j9V6Is.jpg)
 
-![Form (Un)Chainer](https://i.snipboard.io/NmaxXe.jpg)
+- **Modo de Pré-visualização** ( padrão na primeira inicialização ):
+    - Uma vez iniciado, realizará uma única captura de texto.
+    - Nenhuma reforja será realizada no jogo.
+- **Modo de Reforja**
+    - Uma vez iniciado, realizará um número definido de reforjas no jogo,
+      obedecendo a quaisquer condições previamente definidas e
+      resultando em um movimento programático do cursor do mouse e cliques do mouse.
+    - Pode ser parado a qualquer momento clicando no botão **Parar**.
 
-- **Clicking this button opens the log folder.**
-  - For each roll, a resulting text and image file is logged.
-  - **[ ! ] Occasionally empty/delete this folder<br />in order to free up storage space**.
+Usando qualquer tipo de editor de texto, as temporizações podem ser alteradas em
+`\.\Config\Params.cfg` (*inclui comentários adicionais*).
 
 ___
 
-#### 2-3. OCR Result Info
+## FAQ (Perguntas Frequentes)
 
-![OCR Result Info](https://i.snipboard.io/tL4qcp.jpg)
+**<details><summary>` [ (Mostrar|Ocultar Resposta) "A ferramenta não parece funcionar para mim... o que eu faço?" ] `</summary>**
 
-- Displays text captured together with some additional info when previewing or rolling.
-
-___
-
-#### 2-4. Preview | Roll Mode
-
-![Preview | Roll Mode](https://i.snipboard.io/69rtB2.jpg)
-
-- **Preview Mode** ( *default at first launch* ) :
-  - Once started, will perform one single text capture.
-  - No rolls will be performed in-game.
-- **Roll Mode**
-  - Once started, will perform a set number of in-game rolls,
-    - obeying any previously set conditions &
-	- resulting in a programmatically moving mouse cursor and mouse clicks.
-  - Can be stopped at any given time by clicking the `Stop` button.
-  - Using any kind of text editor, timings can be altered in<br />  `.\Config\Params.cfg` (*includes additional comments*).
-
-___
-
-## FAQ
-
-<a id="faq-qa1"></a>
-**<details><summary>` [ (Show|Hide Answer) "The tool doesn't seem to work for me ... what do I do, doc ?" ] `</summary>**
-
-> **Symptoms**: "_No valid roll information detected (yet)._" | "_... doesn't seem necessary to roll any further ... halted ..._" | ...
-
-> ➥ **Answer**:
-- **In general, each capture/roll produces a logged text and image file that may be worth checking<br />in case it would be an OCR related issue.**<br />Check [ 2.2. Log Folder ](#2-2-log-folder) for more information.
-- **It doesn't click/reproduce a roll.**
-  - **It's most probably an admin privilege issue.**<br />Check [ [ Setup > Additional Setup Prerequisites ](#-additional-setup-prerequisites-) ] for instructions on how to enable administrative privileges.
-    - **[ Developer Note ]** This fixed it for most I've been chatting with that had this issue.<br />If many encounter this, I may include code in an update<br />to elevate administrative privileges programmatically ( _hoping it would skip the manual fix_ ).
-  - **Additionally, make sure the capture region has been sized/positioned correctly.**
-- **It does click but the captured results are incorrect/incomplete.**
-  - **It's most probably Windows Display Scaling not being set to `100%`.**<br />Check [ [ Setup > Additional Setup Prerequisites ](#-additional-setup-prerequisites-) ] for instructions on how to change Display Scaling.
-- **It does click/reproduce a roll but still stops a batch roll after a short while.**
-  - **May as well be a timing issue.** Even though the most recent release already has all timings increased and I personally don't think this would still be needed, on older or *trying-to-avoid-what-fries-and-chips-are-made-of-word computers* a solution may be to increase timings even a little more ( _add about 500~xxxx milliseconds to timings of choice_ ).
-    - Check [ [ 2-4. Preview | Roll Mode ](#2-4-preview--roll-mode) ] for the timings config file location.
-- **The captured stats don't match the rolled stats.**
-  - Check the [ [ "captured stats don't match the rolled stats" FaQ entry ](#faq-qa2) ] for more information.
-- **Inform me when the above does not provide a solution to the issue.**
+> ➥ **Resposta**:
+- **Certifique-se de que os pré-requisitos de configuração tenham sido atendidos.**
+- Se estiver usando Windows 8 ou superior,<br />não instale a ferramenta em `C:\Program Files`.
+- Tente executar a ferramenta como administrador.<br />Se estiver usando Windows 10:<br />verifique as configurações de exibição e certifique-se de que a escala esteja definida como `100%`.
+- Se o problema persistir,<br />entre em contato e forneça informações detalhadas.
 
 <hr />
 
 </details>
 
-<a id="faq-qa2"></a>
-**<details><summary>` [ (Show|Hide Answer) "The captured stats don't match the rolled stats ... what do I do, doc ?" ] `</summary>**
+**<details><summary>` [ (Mostrar|Ocultar Resposta) "Os atributos capturados não correspondem aos atributos reforjados... o que eu faço?" ] `</summary>**
 
-> ➥ **Answer**:
-- The ( *most probable* ) cause ( *and solution* ) for this is mentioned<br />in the [ [ See-Through Region ](#1-1-see-through-region) ] section of this ReadMe.:<br />
-  ( **try to avoid including any additional UI elements in the captured region** ).
-
-<hr />
-
-</details>
-
-<a id="faq-qa3"></a>
-**<details><summary>` [ (Show|Hide Answer) "Why did the tool skip a very exotic roll ?" ] `</summary>**
-
-> ➥ **Answer**:
-- Most probably, the cause would be any of these:
-    - **It did not meet any requirements set in the condition list.**<br />Always put some thought in which rolled stats would be preferred and add all-encompassing conditions for those.
-    - **The roll contained a unique stat with a long description.**
-      - Check [ [ 1.1. See-through Region ](#1-1-see-through-region) ] for more information.
-    - **The captured stats didn't match the rolled stats.**
-      - Check the [ [ "captured stats don't match the rolled stats" FaQ entry ](#faq-qa2) ] for more information.
-    - **Inform me with detailed information ( *and if possible steps to reproduce* )<br />if you think any of the above aren't the reason.<br />I would consider such a priority fix.**
+> ➥ **Resposta**:
+- **Possíveis causas**:
+    - A região transparente foi ajustada incorretamente.<br />Verifique [ [ 1-1. Região Transparente ](#1-1-regiao-transparente) ] para mais informações.
+    - O modo de reforja foi iniciado com o cursor sobre o botão errado.<br />Verifique [ [ 2-4. Modo de Pré-visualização | Reforja ](#2-4-modo-de-pre-visualizacao--reforja) ] para mais informações.
+    - O jogo renderizou o texto de forma diferente do esperado.<br />Por favor, forneça informações detalhadas se você achar que este é o caso.
 
 <hr />
 
 </details>
 
-<a id="faq-qa4"></a>
-**<details><summary>` [ (Show|Hide Answer) "What are my chances to roll certain stats ?" ] `</summary>**
+**<details><summary>` [ (Mostrar|Ocultar Resposta) "Por que a ferramenta pulou uma reforja muito exótica?" ] `</summary>**
 
-> ➥ **Answer**:
-- **A good and up-to-date reference on roll chances per stat/gear** can be found here:<br />
+> ➥ **Resposta**:
+- **Possíveis causas**:
+    - **A reforja continha um atributo único com descrição longa.**
+      - Verifique [ [ 1-2. Região de Captura ](#1-2-regiao-de-captura) ] para mais informações.
+    - **Os atributos capturados não correspondiam aos atributos reforjados.**
+      - Verifique [ [ "Os atributos capturados não correspondem aos atributos reforjados" FAQ ](#faq-qa2) ] para mais informações.
+    - **Informe-me com informações detalhadas ( *e, se possível, passos para reproduzir* )<br />se você achar que nenhum dos itens acima é a razão.<br />Eu consideraria isso uma correção prioritária.**
+
+<hr />
+
+</details>
+
+**<details><summary>` [ (Mostrar|Ocultar Resposta) "Quais são as minhas chances de obter certos atributos?" ] `</summary>**
+
+> ➥ **Resposta**:
+- **Uma boa e atualizada referência sobre as chances de reforja por atributo/equipamento** pode ser encontrada aqui:<br />
   [EPW Forum ~ R8 Recast Add-On Guide](https://epicpw.com/index.php?topic=2172.0).
-- As for the tool, it doesn't increase chances in any way.<br />
-  Legend goes *`inf`* once wrote this tool only takes away the boring part of rolling gear ;).
+- Quanto à ferramenta, ela não aumenta as chances de nenhuma maneira.<br />
+  Diz a lenda que *`inf`* uma vez escreveu que esta ferramenta apenas tira a parte entediante de reforjar equipamentos ;).
 
 <hr />
 
 </details>
 
-<a id="faq-qa5"></a>
-**<details><summary>` [ (Show|Hide Answer) "I still use version 2 of the tool, should I update ?" ] `</summary>**
+**<details><summary>` [ (Mostrar|Ocultar Resposta) "Eu ainda uso a versão 2 da ferramenta, devo atualizar?" ] `</summary>**
 
-> ➥ **Answer**:
-- **In general: yes**, I would advice to update.
-- In a nutshell:
-  - For rolls like f.e. *`2 x Channelling*`, *`4 x Interval*`, any previous version will do just fine.
-  - For more exotic rolls ( *combined stats, ...* ), version 3.1 is recommended.
-
-<hr />
-
-</details>
-
-<a id="faq-qa6"></a>
-**<details><summary>` [ (Show|Hide Answer) "Does this tool work on other servers as well (besides EPW) ?" ] `</summary>**
-
-> ➥ **Answer**:
-- **In general: if server X follows the same mechanics of rolling gears, it should**.
-- I only ever played EPW, although I got confirmation it works on f.e. *Relentless* as well.
+> ➥ **Resposta**:
+- **Em geral: sim**, eu aconselharia atualizar.
+- Em resumo:
+  - Para reforjas como *`2 x Canalização`*, *`4 x Intervalo`*, qualquer versão anterior funciona bem.
+  - Para reforjas mais exóticas (*combinações de atributos, ...*), a versão 3.1 é recomendada.
 
 <hr />
 
 </details>
 
-<a id="faq-qa7"></a>
-**<details><summary>` [ (Show|Hide Answer) "Can the roll speed be adjusted/increased ?" ] `</summary>**
+**<details><summary>` [ (Mostrar|Ocultar Resposta) "Esta ferramenta funciona em outros servidores também (além do EPW)?" ] `</summary>**
 
-> ➥ **Answer**:
-- **Yes**. As stated in section [ [2-4. Preview | Roll Mode](#2-4-preview--roll-mode) ]:<br />
-  **Using any kind of text editor, timings can be altered in**<br />
-   **`.\Config\Params.cfg (includes additional comments).`**
-- Example of speed settings ( *defaults since v3.1.2* ) :
+> ➥ **Resposta**:
+- **Em geral: se o servidor X segue as mesmas mecânicas de reforja de equipamentos, deve funcionar**.
+- Eu só joguei EPW, embora tenha recebido confirmação de que funciona, por exemplo, em *Relentless* também.
+
+<hr />
+
+</details>
+
+**<details><summary>` [ (Mostrar|Ocultar Resposta) "A velocidade da reforja pode ser ajustada/aumentada?" ] `</summary>**
+
+> ➥ **Resposta**:
+- **Sim**. Conforme declarado na seção [ [2-4. Modo de Pré-visualização | Reforja](#2-4-modo-de-pre-visualizacao--reforja) ]:<br />
+  **Usando qualquer tipo de editor de texto, as temporizações podem ser alteradas em**<br />
+   **`.\Config\Params.cfg (inclui comentários adicionais).`**
+- Exemplo de configurações de velocidade (*padrões desde v3.1.2*) :
 
 ```ini
 # =================================================================
-# Time it takes for the in-game reproduce button
-# to become available again.
-# Note: Should be above 1500 milliseconds (personal measured time).
+# Tempo que leva para o botão de reforjar do jogo
+# ficar disponível novamente.
+# Nota: Deve ser acima de 1500 milissegundos (tempo medido pessoalmente).
 # =================================================================
 
 Await In-Game Reproduce Button Available    | 1750 milliseconds
 
 
 # =================================================================
-# Time it takes for the in-game stats to be rolled.
+# Tempo que leva para os atributos no jogo serem reforjados.
 # =================================================================
 
 Await In-Game Stats Rolled            | 1750 milliseconds
 
 
 # =================================================================
-# Time to wait before accepting/rejecting a roll.
-# Notes:
-#       - A lower value speeds up the roll process.
-#         However, if lowered: more difficult to stop roll process
-#         due to mouse cursor being moved.
-#       - A higher value makes it easier for the user
-#         to follow the roll process and thus leans
-#         closer to human behavior.
+# Tempo de espera antes de aceitar/rejeitar uma reforja.
+# Notas:
+#       - Um valor menor acelera o processo de reforja.
+#         No entanto, se reduzido: mais difícil parar o processo de reforja
+#         devido ao movimento do cursor do mouse.
+#       - Um valor maior torna mais fácil para o usuário
+#         acompanhar o processo de reforja e, assim, se aproxima
+#         mais do comportamento humano.
 # =================================================================
 
 Await Accept/Reject Action            | 2250 milliseconds
 ```
 
-- Roll speed can even be sped up more if so desired.<br />( *Mainly the 3rd timing option; check config comments for more info*. )
-- If the tool is still open when changing the above mentioned file, restart the tool to apply any changes.
+- A velocidade da reforja pode ser aumentada ainda mais se desejado.<br />( *Principalmente a 3ª opção de temporização; confira os comentários do arquivo de configuração para mais informações*.)
+- Se a ferramenta ainda estiver aberta ao alterar o arquivo mencionado acima, reinicie a ferramenta para aplicar quaisquer alterações.
 
 <hr />
 
 </details>
 
-<a id="faq-qa8"></a>
-**<details><summary>` [ (Show|Hide Answer) "Can I to contact you in any way / provide any feedback ?" ] `</summary>**
+**<details><summary>` [ (Mostrar|Ocultar Resposta) "Posso entrar em contato com você de alguma forma / fornecer algum feedback?" ] `</summary>**
 
-> ➥ **Answer**:
-- **Sure.** Check [below](#contact--feedback) for ways to get in touch with me.<br />Feedback is always welcome and greatly appreciated.
+> ➥ **Resposta**:
+- **Claro.** Confira [abaixo](#contact--feedback) as maneiras de entrar em contato comigo.<br />Feedback é sempre bem-vindo e muito apreciado.
 
 </details>
 
 ___
 
-## Technical Notes & References
+## Notas Técnicas e Referências
 
-- This tool has been programmed in Visual Studio 2019 Community Edition using C# language.
-- Third-party libraries used:
-  - [Tesseract](https://github.com/UB-Mannheim/tesseract) ( *OCR* )
-  - [MetroFramework](https://github.com/thielj/MetroFramework) ( *UI framework* )
-  - [Costura](https://github.com/Fody/Costura) ( *self-contained executable build* )
-  - [Humanizer](https://github.com/Humanizr/Humanizer) ( *human readable time difference* )
+- Esta ferramenta foi programada no Visual Studio 2019 Community Edition usando a linguagem C#.
+- Bibliotecas de terceiros utilizadas:
+  - [Tesseract](https://github.com/UB-Mannheim/tesseract) (*OCR*)
+  - [MetroFramework](https://github.com/thielj/MetroFramework) (*framework de UI*)
+  - [Costura](https://github.com/Fody/Costura) (*compilação em executável autocontido*)
+  - [Humanizer](https://github.com/Humanizr/Humanizer) (*diferença de tempo legível por humanos*)
 
 ___
 
-## Contact | Feedback
+## Contato | Feedback
 
-- Post a message in the [ EPW Tool Release Info Thread ](https://epicpw.com/index.php?topic=68651.0).
-- Feel free to post-message me in-game | on Discord.
+- Poste uma mensagem no [ Tópico de Informações de Lançamento da Ferramenta EPW ](https://epicpw.com/index.php?topic=68651.0).
+- Sinta-se à vontade para me enviar uma mensagem no jogo | no Discord.
 
-> *( Any kind of ) Feedback is always welcome and greatly appreciated.*
+> *(Qualquer tipo de) Feedback é sempre bem-vindo e muito apreciado.*
