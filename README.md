@@ -3,7 +3,7 @@
 ![Visão Geral](./GitHub%20Assets/EPW%20Recaster%20PT-BR%20-%20Release%20v3.1.3.jpg)
 
 ## Download
-**[ [ Versão Melhorada PT-BR ](https://github.com/KimDebroye/EPW-Recaster/releases) ]**
+**[ [ Versão Melhorada PT-BR ](https://github.com/Alazen/EPW-Recaster-PTBR/releases) ]**
 
 **[ [ Versão Original EN-US ](https://github.com/KimDebroye/EPW-Recaster/releases) ]**
 
