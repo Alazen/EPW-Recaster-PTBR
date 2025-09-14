@@ -1,0 +1,1 @@
+msbuild "EPW Recaster.sln" /p:Configuration=Release

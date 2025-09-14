@@ -157,7 +157,7 @@ namespace EPW_Recaster
             this.chkbxAutoScrollBottom.Name = "chkbxAutoScrollBottom";
             this.chkbxAutoScrollBottom.Size = new System.Drawing.Size(124, 15);
             this.chkbxAutoScrollBottom.TabIndex = 17;
-            this.chkbxAutoScrollBottom.Text = "Rolagem automática para o final";
+            this.chkbxAutoScrollBottom.Text = "Roleta automática para o final";
             this.chkbxAutoScrollBottom.UseSelectable = true;
             this.chkbxAutoScrollBottom.Visible = false;
             // 

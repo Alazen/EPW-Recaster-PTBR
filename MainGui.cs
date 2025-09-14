@@ -573,7 +573,7 @@ namespace EPW_Recaster
 
             #endregion Any Amount.
 
-            toolTip.SetToolTip(numSubAmount, "\r\nℹ\r\nIgnore as estatísticas brancas.\r\n( ex.: 'Phys. Res.' máximo = 4 )\r\n ");
+            toolTip.SetToolTip(numSubAmount, "\r\nℹ\r\nIgnore as adds brancas.\r\n( ex.: 'Phys. Res.' máximo = 4 )\r\n ");
 
             // [DEVNOTE] Added mouse hover event based workaround in order to show tooltip longer than default 5 seconds.
             //toolTip.SetToolTip(chkbxAnyAmount, "\r\nℹ\r\nWhen checked:\r\n" +
@@ -1154,7 +1154,7 @@ namespace EPW_Recaster
                 {
                     if (i == 0)
                     {
-                        currentStatTerm += "[  quantidade fixa  |  qualquer outra estatística permitida  ]\r\n";
+                        currentStatTerm += "[  quantidade fixa  |  outros adds são permitidos  ]\r\n";
 
                         currentStatTerm += "  • min. ";
                     }
@@ -1241,7 +1241,7 @@ namespace EPW_Recaster
                     (conditionListEntry[0].LongTerm.ToLower().Contains("Atk".ToLower()) || conditionListEntry[0].LongTerm.ToLower().Contains("Def.".ToLower()))
                     )
                 {
-                    longTermEntry = longTermEntry.Replace("qualquer outra estatística permitida", "nenhuma outra estatística possível");
+                    longTermEntry = longTermEntry.Replace("outros adds são permitidos", "nenhum outro add possível");
                 }
             }
             else
@@ -1249,7 +1249,7 @@ namespace EPW_Recaster
                 // [DEVNOTE] f.e. 4 x Channelling => Can't know in advance if it's for a weapon or for an armor piece, hence max at 5.
                 if (conditionListEntry.Sum(condition => condition.Amount) == 5)
                 {
-                    longTermEntry = longTermEntry.Replace("qualquer outra estatística permitida", "nenhuma outra estatística possível");
+                    longTermEntry = longTermEntry.Replace("outros adds são permitidos", "nenhum outro add possível");
                 }
             }
 
@@ -1567,8 +1567,8 @@ namespace EPW_Recaster
                 {
                     // Show warning to user.
                     MetroMessageBox.Show(this,
-                                "A quantidade combinada de estatísticas preferidas (" + totalStatAmount.ToString() + ") excede o número máximo de estatísticas (azuis)." + Environment.NewLine +
-                                "( arma = máx. 5 estatísticas | armadura = máx. 4 estatísticas )" + Environment.NewLine +
+                                "A quantidade combinada de adds preferidas (" + totalStatAmount.ToString() + ") excede o número máximo de adds (azuis)." + Environment.NewLine +
+                                "( arma = máx. 5 adds | armadura = máx. 4 adds )" + Environment.NewLine +
                                 "Verifique e corrija a quantidade de cada estatística antes de adicioná-la à lista.",
                                 "", // Warning
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -2455,7 +2455,7 @@ namespace EPW_Recaster
             // Can (apparently) go up to 32,767 milliseconds.
             // Reference: https://stackoverflow.com/a/8225836
             toolTip.Show("\r\nℹ\r\nQuando marcado:\r\n" +
-                "✅ Aceita qualquer quantidade\r\nde cada uma das estatísticas selecionadas\r\n(a ser detectada pelo menos uma vez).\r\n" +
+                "✅ Aceita qualquer quantidade\r\nde cada uma das adds selecionadas\r\n(a ser detectada pelo menos uma vez).\r\n" +
                 "❌ Não aceita se uma estatística for detectada\r\ndiferente das listadas\r\nou quando uma estatística listada estiver ausente.\r\n ",
                 chkbxAnyAmount,
                 duration: 30000

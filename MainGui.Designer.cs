@@ -352,7 +352,7 @@ namespace EPW_Recaster
             this.chkbxAnyAmount.Name = "chkbxAnyAmount";
             this.chkbxAnyAmount.Size = new System.Drawing.Size(250, 15);
             this.chkbxAnyAmount.TabIndex = 29;
-            this.chkbxAnyAmount.Text = "Qualquer combinação das estatísticas selecionadas?";
+            this.chkbxAnyAmount.Text = "Qualquer combinação das adds selecionadas?";
             this.chkbxAnyAmount.UseSelectable = true;
             this.chkbxAnyAmount.Visible = false;
             this.chkbxAnyAmount.CheckedChanged += new System.EventHandler(this.chkbxAnyAmount_CheckedChanged);
