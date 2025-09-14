@@ -1,6 +1,6 @@
 # EPW Recaster PT-BR
 
-![Visão Geral](https://i.snipboard.io/i0SQku.jpg)
+![Visão Geral](./GitHub%20Assets/EPW%20Recaster%20PT-BR%20-%20Release%20v3.1.3.jpg)
 
 ## Download
 **[ [ Versões Mais Recentes e Antigas ](https://github.com/KimDebroye/EPW-Recaster/releases) ]**
