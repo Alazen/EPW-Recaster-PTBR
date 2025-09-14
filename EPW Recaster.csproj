@@ -368,6 +368,9 @@
     <None Include="Tesseract\5 %28Alpha%29\tessdata\osd.traineddata">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Tesseract\5 %28Alpha%29\tessdata\por.traineddata">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Tesseract\5 %28Alpha%29\tessdata\pdf.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
