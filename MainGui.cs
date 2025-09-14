@@ -1154,7 +1154,7 @@ namespace EPW_Recaster
                 {
                     if (i == 0)
                     {
-                        currentStatTerm += "[  quantidade fixa  |  qualquer outra estatística permitida  ]\r\n";
+                        currentStatTerm += "[  quantidade fixa  |  outros adds são permitidos  ]\r\n";
 
                         currentStatTerm += "  • min. ";
                     }
@@ -1241,7 +1241,7 @@ namespace EPW_Recaster
                     (conditionListEntry[0].LongTerm.ToLower().Contains("Atk".ToLower()) || conditionListEntry[0].LongTerm.ToLower().Contains("Def.".ToLower()))
                     )
                 {
-                    longTermEntry = longTermEntry.Replace("qualquer outra estatística permitida", "nenhuma outra estatística possível");
+                    longTermEntry = longTermEntry.Replace("outros adds são permitidos", "nenhum outro add possível");
                 }
             }
             else
@@ -1249,7 +1249,7 @@ namespace EPW_Recaster
                 // [DEVNOTE] f.e. 4 x Channelling => Can't know in advance if it's for a weapon or for an armor piece, hence max at 5.
                 if (conditionListEntry.Sum(condition => condition.Amount) == 5)
                 {
-                    longTermEntry = longTermEntry.Replace("qualquer outra estatística permitida", "nenhuma outra estatística possível");
+                    longTermEntry = longTermEntry.Replace("outros adds são permitidos", "nenhum outro add possível");
                 }
             }
 
